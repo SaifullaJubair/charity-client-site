@@ -1,10 +1,13 @@
-import { Inter } from "next/font/google";
 import "./globals.css";
 import { AntdRegistry } from "@ant-design/nextjs-registry";
 import Navbar from "@/components/shared/Navbar/Navbar";
 import TopBar from "@/components/shared/Navbar/TopBar";
+import { roboto_serif } from "@/utils/Font/font";
 
-const inter = Inter({ subsets: ["latin"] });
+// const roboto = Sora({
+//   weight: ["400", "700"],
+//   subsets: ["latin"],
+// });
 
 export const metadata = {
   title: "Create Next App",
@@ -14,7 +17,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <AntdRegistry>
-      <html lang="en">
+      <html lang="en" className={roboto_serif.className}>
         <body>
           <TopBar />
           <Navbar />

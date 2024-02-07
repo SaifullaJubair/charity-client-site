@@ -1,5 +1,11 @@
+import Banner from "@/components/ui/Banner/Banner";
+
 const HomePage = () => {
-  return <div>Welcome to Our Charity</div>;
+  return (
+    <div className="max-w-[1920px] mx-auto">
+      <Banner />
+    </div>
+  );
 };
 
 export default HomePage;

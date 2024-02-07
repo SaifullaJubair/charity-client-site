@@ -10,7 +10,7 @@ import React from "react";
 function TopBar() {
   return (
     <div className=" bg-primary py-4  text-light hidden md:block">
-      <div className="max-w-[1920px] mx-auto">
+      <div className="max-w-[1700px] mx-auto">
         <nav className="flex items-center justify-between mx-12">
           <div className="flex items-center ">
             <div>
