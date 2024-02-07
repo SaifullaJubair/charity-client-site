@@ -1,4 +1,7 @@
+import Search from "antd/es/input/Search";
+
 const Banner = () => {
+  //   const onSearch = (value, _e, info) => console.log(info?.source, value);
   return (
     <div
       className="max-w-[1920px] mx-auto min-h-[80vh] bg-hand-flower relative"
@@ -9,9 +12,17 @@ const Banner = () => {
       }}
     >
       <div className="absolute inset-0 flex flex-col items-center justify-center text-center">
-        <p className="text-6xl  text-light max-w-6xl tracking-wider  font-bold">
+        <p className="text-6xl mt-16  text-light max-w-6xl tracking-wider  font-bold">
           Donations Even If It Is A Small Can Bring Bigger
         </p>
+        <Search
+          placeholder="input search text"
+          className="w-1/3 my-8"
+          //   onSearch={onSearch}
+          allowClear
+          enterButton
+          size="large"
+        />
       </div>
     </div>
   );
