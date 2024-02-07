@@ -27,7 +27,7 @@ const Navbar = () => {
   };
   return (
     <Layout className="layout shadow-lg max-w-[1920px] mx-auto sticky top-0">
-      <Header className="flex items-center py-8 bg-white px-8  ">
+      <Header className="flex items-center py-8 bg-white px-8 ">
         <Content>
           <Link href="/">
             <Title className="m-0 text-2xl flex items-center">

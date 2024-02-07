@@ -1,5 +1,5 @@
 import {
-  FacebookOutlined,
+  FacebookFilled,
   InstagramOutlined,
   MailOutlined,
   PhoneOutlined,
@@ -25,9 +25,9 @@ function TopBar() {
           </div>
           <div>
             <p>
-              Follow Us- <FacebookOutlined className="mx-1" />
-              <InstagramOutlined className="ml-1" />{" "}
-              <TwitterOutlined className="ml-1" />
+              Follow Us- <FacebookFilled className="mx-1 text-gray-300" />
+              <InstagramOutlined className="ml-1 text-gray-300" />{" "}
+              <TwitterOutlined className="ml-1 text-gray-300" />
             </p>
           </div>
         </nav>
