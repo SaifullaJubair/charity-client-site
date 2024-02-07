@@ -1,9 +1,15 @@
 "use client";
-import Link from "next/link";
 
-const ErrorPage = () => {
+import Link from "next/link";
+import { useEffect } from "react";
+
+const GlobalError = ({ error, reset }) => {
+  useEffect(() => {
+    // Log the error to an error reporting service
+    console.error(error);
+  }, [error]);
   return (
-    <section className="flex items-center h-full sm:p-16 bg-gray-50 text-gray-800">
+    <div className="flex items-center h-full sm:p-16 bg-gray-50 min-h-screen text-gray-800">
       <div className="container flex flex-col items-center justify-center px-5 mx-auto my-8 space-y-8 text-center sm:max-w-md">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -31,9 +37,27 @@ const ErrorPage = () => {
           ></polygon>
         </svg>
         <p className="text-3xl">Something went wrong!</p>
+        <div className="flex flex-wrap justify-center gap-3">
+          <Link
+            rel="noopener noreferrer"
+            href="/"
+            className="px-6 py-3 font-semibold rounded bg-orange-600 text-gray-50"
+          >
+            Back to homepage
+          </Link>
+          <button
+            className="px-6 py-3 font-semibold rounded bg-red-600 text-gray-50"
+            onClick={
+              // Attempt to recover by trying to re-render the segment
+              () => reset()
+            }
+          >
+            Try again
+          </button>
+        </div>
       </div>
-    </section>
+    </div>
   );
 };
 
-export default ErrorPage;
+export default GlobalError;
