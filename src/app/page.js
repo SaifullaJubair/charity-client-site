@@ -1,10 +1,10 @@
-import { Button } from "@mui/material";
+import { Button } from "antd";
 
 const HomePage = () => {
   return (
     <div>
       Welcome to Our Charity
-      <Button variant="contained" color="secondary" sx={{ m: 20 }}>
+      <Button type="primary" color="blue" className="m-20">
         This is button
       </Button>
     </div>
