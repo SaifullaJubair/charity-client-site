@@ -13,7 +13,7 @@ const WhyChoseUs = () => {
   };
   return (
     <div
-      className="max-w-[1920px] mx-auto my-16 py-16 min-h-[80vh] flex flex-col items-center justify-center"
+      className="max-w-[1920px] mx-auto mt-16 py-16 min-h-[80vh] flex flex-col items-center justify-center"
       style={{
         backgroundImage: `
        linear-gradient(0deg, rgba(15, 15, 15,.95), rgba(15, 15, 15,.95)),url('https://images.unsplash.com/photo-1591276625440-d50e6618dfd1?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')`,
