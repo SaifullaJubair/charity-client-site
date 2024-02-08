@@ -1,7 +1,7 @@
-import { cookie, roboto_serif, yatra } from "@/utils/Font/font";
+import { cookie, yatra } from "@/utils/Font/font";
 import Image from "next/image";
 import house from "@/assets/house.jpg";
-import { Button } from "antd";
+import { Button, Slider } from "antd";
 
 const UrgentCause = () => {
   return (
@@ -67,10 +67,13 @@ const UrgentCause = () => {
                 We Help More Than 9k Children Every Year
               </h2>
               <p className="text-gry-700 text-sm">
-                BigHearts is the largest global crowdfunding community
-                connecting nonprofits, donors, and companies in nearly every
-                country. We help nonprofits from
+                BigHearts is the largest global crowdfunding community ...
               </p>
+              <div className=" text-gray-700 font-semibold mt-2">
+                <p>Raised : $6,399.00</p>
+                <p>Goal : $6,781.00</p>
+              </div>
+              {/* <Slider defaultValue={30} /> */}
               <Button type="primary" danger className="my-4">
                 VIEW DETAILS
               </Button>
