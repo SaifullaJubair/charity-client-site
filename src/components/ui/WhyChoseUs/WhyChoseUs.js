@@ -1,10 +1,16 @@
+"use client";
 import { cookie, yatra } from "@/utils/Font/font";
 import { Button } from "antd";
-import React from "react";
+import React, { useState } from "react";
 import { FaHandHoldingHeart } from "react-icons/fa";
 import { FaHandshakeSimple } from "react-icons/fa6";
 
 const WhyChoseUs = () => {
+  const [activeButton, setActiveButton] = useState(null);
+
+  const handleButtonClick = (buttonName) => {
+    setActiveButton(buttonName);
+  };
   return (
     <div
       className="max-w-[1920px] mx-auto my-16 py-16 min-h-[80vh] flex flex-col items-center justify-center"
@@ -32,12 +38,78 @@ const WhyChoseUs = () => {
               Trusted Non Profit Donation Center
             </h2>
 
-            <p className="text-gray-300 text-sm mt-4">
+            <div className="flex items-center gap-4 my-8">
+              <Button
+                type="text"
+                shape="round"
+                size="large"
+                className={` text-light ${
+                  activeButton === "Mission"
+                    ? "bg-secondary"
+                    : "border-1 border-white"
+                }`}
+                onClick={() => handleButtonClick("Mission")}
+              >
+                Mission
+              </Button>
+              <Button
+                type="text"
+                shape="round"
+                size="large"
+                className={` text-light ${
+                  activeButton === "Vision"
+                    ? "bg-secondary"
+                    : "border-1 border-white"
+                }`}
+                onClick={() => handleButtonClick("Vision")}
+              >
+                Vision
+              </Button>
+              <Button
+                type="text"
+                shape="round"
+                size="large"
+                className={` text-light ${
+                  activeButton === "Company Value"
+                    ? "bg-secondary"
+                    : "border-1 border-white"
+                }`}
+                onClick={() => handleButtonClick("Company Value")}
+              >
+                Company Value
+              </Button>
+            </div>
+            {activeButton === "Mission" && (
+              <p className="text-gray-300 text-sm mt-4 ">
+                Our Mission: There are many variations of passages of Lorem
+                Ipsum available, but the majority have suffered alteration in
+                some form, by injected humour, or random aset words which do not
+                look even slightly believable.
+              </p>
+            )}
+            {activeButton === "Vision" && (
+              <p className="text-gray-300 text-sm mt-4">
+                Our Vision: There are many variations of passages of Lorem Ipsum
+                available, but the majority have suffered alteration in some
+                form, by injected humour, or random aset words which do not look
+                even slightly believable.
+              </p>
+            )}
+            {activeButton === "Company Value" && (
+              <p className="text-gray-300 text-sm mt-4">
+                Our Company Value: There are many variations of passages of
+                Lorem Ipsum available, but the majority have suffered alteration
+                in some form, by injected humour, or random aset words which do
+                not look even slightly believable.
+              </p>
+            )}
+            {/* <p className="text-gray-300 text-sm mt-4">
               There are many variations of passages of orem Ipsum available, but
               the majority have suffered alteration in some form, by cted ipsum
               dolor sit amet, consectetur adipisicing elit, sed do usmod mponcid
               idunt ut labore et dolore magna aliqua.
-            </p>
+            </p> */}
+
             <div className="flex items-center gap-6">
               <p className="w-12 h-12 rounded-full ring-2 my-8 flex items-center justify-center ring-secondary">
                 <FaHandHoldingHeart className="text-secondary text-3xl" />
