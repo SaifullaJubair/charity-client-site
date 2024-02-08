@@ -3,6 +3,7 @@ import AboutUs from "@/components/ui/AboutUs/AboutUs";
 import Banner from "@/components/ui/Banner/Banner";
 import UrgentCause from "@/components/ui/UrgentCause/UrgentCause";
 import LatestCauses from "@/components/ui/LatestCauses/LatestCauses";
+import OurEvents from "@/components/ui/OurEvents/OurEvents";
 
 const HomePage = () => {
   return (
@@ -12,6 +13,7 @@ const HomePage = () => {
       <AboutUs />
       <WhyChoseUs />
       <LatestCauses />
+      <OurEvents />
     </div>
   );
 };

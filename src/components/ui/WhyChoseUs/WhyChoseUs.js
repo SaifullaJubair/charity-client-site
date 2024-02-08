@@ -6,7 +6,7 @@ import { FaHandHoldingHeart } from "react-icons/fa";
 import { FaHandshakeSimple } from "react-icons/fa6";
 
 const WhyChoseUs = () => {
-  const [activeButton, setActiveButton] = useState(null);
+  const [activeButton, setActiveButton] = useState("Mission");
 
   const handleButtonClick = (buttonName) => {
     setActiveButton(buttonName);
@@ -38,7 +38,7 @@ const WhyChoseUs = () => {
               Trusted Non Profit Donation Center
             </h2>
 
-            <div className="flex items-center gap-4 my-8">
+            <div className="flex items-center gap-4 my-8 flex-wrap">
               <Button
                 type="text"
                 shape="round"
@@ -103,12 +103,6 @@ const WhyChoseUs = () => {
                 not look even slightly believable.
               </p>
             )}
-            {/* <p className="text-gray-300 text-sm mt-4">
-              There are many variations of passages of orem Ipsum available, but
-              the majority have suffered alteration in some form, by cted ipsum
-              dolor sit amet, consectetur adipisicing elit, sed do usmod mponcid
-              idunt ut labore et dolore magna aliqua.
-            </p> */}
 
             <div className="flex items-center gap-6">
               <p className="w-12 h-12 rounded-full ring-2 my-8 flex items-center justify-center ring-secondary">
@@ -155,7 +149,7 @@ const WhyChoseUs = () => {
           <div className="md:w-1/2 sm:w-3/4 w-full mx-4 sm:mx-auto">
             <iframe
               width="100%"
-              className="rounded-lg lg:h-[450px] sm:h-[350px] h-[250px]"
+              className="rounded-lg lg:h-[450px] sm:h-[350px] h-[250px] "
               src="https://www.youtube.com/embed/TqhNILVX8IE?si=AMs6j195MFeIr9k1"
               frameborder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"

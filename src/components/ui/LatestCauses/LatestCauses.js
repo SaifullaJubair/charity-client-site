@@ -21,7 +21,7 @@ const LatestCauses = () => {
           >
             We are working on it
           </h2>
-          <p className="text-gray-500 max-w-3xl text-center mt-4">
+          <p className="text-gray-500 max-w-3xl text-center my-6">
             There are many variations of passages of orem Ipsum available, but
             the majority have suffered alteration in some form, by cted ipsum.
           </p>
