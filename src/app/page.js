@@ -1,3 +1,4 @@
+import WhyChoseUs from "@/components/ui/WhyChoseUs/WhyChoseUs";
 import AboutUs from "@/components/ui/AboutUs/AboutUs";
 import Banner from "@/components/ui/Banner/Banner";
 import UrgentCause from "@/components/ui/UrgentCause/UrgentCause";
@@ -8,6 +9,7 @@ const HomePage = () => {
       <Banner />
       <UrgentCause />
       <AboutUs />
+      <WhyChoseUs />
     </div>
   );
 };

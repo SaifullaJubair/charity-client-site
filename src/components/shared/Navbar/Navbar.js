@@ -29,7 +29,7 @@ const Navbar = () => {
   };
   return (
     <div className="shadow-lg sticky top-0 z-50 bg-white">
-      <Layout className="layout  max-w-[1700px] mx-auto ">
+      <Layout className="layout  max-w-[1700px] mx-auto  ">
         <Header className="flex  items-center py-8 bg-white px-8 ">
           <Content>
             <Link href="/">
@@ -43,7 +43,6 @@ const Navbar = () => {
             disabledOverflow
             mode="horizontal"
             selectedKeys={[pathname]}
-            activeKey=""
           >
             {items?.map((item) => (
               <Menu.Item key={item.href} className="font-semibold  ">
