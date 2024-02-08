@@ -73,7 +73,7 @@ const AboutUs = () => {
             Check What Makes Us Different Than Others
           </h2>
 
-          <p className="text-gry-700 text-sm mt-4">
+          <p className="text-gray-700 text-sm mt-4">
             There are many variations of passages of orem Ipsum available, but
             the majority have suffered alteration in some form, by cted ipsum
             dolor sit amet, consectetur adipisicing elit, sed do usmod mponcid

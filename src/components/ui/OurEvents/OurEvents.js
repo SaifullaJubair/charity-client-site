@@ -10,7 +10,7 @@ import e6 from "../../../assets/yannis-h-uaPaEM7MiQQ-unsplash.jpg";
 
 const OurEvents = () => {
   return (
-    <div className="max-w-[1920px] mx-auto min-h-[90vh] bg-white py-20 ">
+    <div className="max-w-[1920px] mx-auto min-h-[90vh] bg-light py-20 ">
       <div className="max-w-[1440px] mx-auto">
         <div className="flex flex-col items-center justify-center ">
           <h4
@@ -40,7 +40,7 @@ const OurEvents = () => {
                 width={300}
                 layout="responsive"
               />
-              <div className="absolute inset-0 bottom-0 flex flex-col justify-end px-6 py-4 transition-opacity duration-200 bg-black bg-opacity-75 opacity-0 hover:opacity-100">
+              <div className="absolute inset-0 flex flex-col justify-end px-6 py-4 transition-opacity duration-200 bg-black bg-opacity-75 opacity-0 hover:opacity-100">
                 <p className="mb-4 text-lg font-bold text-gray-100">
                   Mona Lisa
                 </p>
@@ -61,7 +61,7 @@ const OurEvents = () => {
                 width={300}
                 layout="responsive"
               />
-              <div className="absolute inset-0 bottom-0 flex flex-col justify-end px-6 py-4 transition-opacity duration-200 bg-black bg-opacity-75 opacity-0 hover:opacity-100">
+              <div className="absolute inset-0 flex flex-col justify-end px-6 py-4 transition-opacity duration-200 bg-black bg-opacity-75 opacity-0 hover:opacity-100">
                 <p className="mb-4 text-lg font-bold text-gray-100">
                   Mona Lisa
                 </p>
@@ -82,7 +82,7 @@ const OurEvents = () => {
                 width={300}
                 layout="responsive"
               />
-              <div className="absolute inset-0 bottom-0 flex flex-col justify-end px-6 py-4 transition-opacity duration-200 bg-black bg-opacity-75 opacity-0 hover:opacity-100">
+              <div className="absolute inset-0 flex flex-col justify-end px-6 py-4 transition-opacity duration-200 bg-black bg-opacity-75 opacity-0 hover:opacity-100">
                 <p className="mb-4 text-lg font-bold text-gray-100">
                   Mona Lisa
                 </p>
@@ -103,7 +103,7 @@ const OurEvents = () => {
                 width={300}
                 layout="responsive"
               />
-              <div className="absolute inset-0 bottom-0 flex flex-col justify-end px-6 py-4 transition-opacity duration-200 bg-black bg-opacity-75 opacity-0 hover:opacity-100">
+              <div className="absolute inset-0 flex flex-col justify-end px-6 py-4 transition-opacity duration-200 bg-black bg-opacity-75 opacity-0 hover:opacity-100">
                 <p className="mb-4 text-lg font-bold text-gray-100">
                   Mona Lisa
                 </p>
@@ -123,7 +123,7 @@ const OurEvents = () => {
                 width={300}
                 layout="responsive"
               />
-              <div className="absolute inset-0 bottom-0 flex flex-col justify-end px-6 py-4 transition-opacity duration-200 bg-black bg-opacity-75 opacity-0 hover:opacity-100">
+              <div className="absolute inset-0 flex flex-col justify-end px-6 py-4 transition-opacity duration-200 bg-black bg-opacity-75 opacity-0 hover:opacity-100">
                 <p className="mb-4 text-lg font-bold text-gray-100">
                   Mona Lisa
                 </p>
@@ -143,7 +143,7 @@ const OurEvents = () => {
                 width={300}
                 layout="responsive"
               />
-              <div className="absolute inset-0 bottom-0 flex flex-col justify-end px-6 py-4 transition-opacity duration-200 bg-black bg-opacity-75 opacity-0 hover:opacity-100">
+              <div className="absolute inset-0 flex flex-col justify-end px-6 py-4 transition-opacity duration-200 bg-black bg-opacity-75 opacity-0 hover:opacity-100">
                 <p className="mb-4 text-lg font-bold text-gray-100">
                   Mona Lisa
                 </p>
