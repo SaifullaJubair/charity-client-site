@@ -15,12 +15,12 @@ export const yatra = Yatra_One({
 
 export const roboto_mono = Roboto_Mono({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["300", "400", "500", "600", "700"],
   display: "swap",
 });
 export const roboto_serif = Roboto_Serif({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800", "900"],
+  weight: ["300", "400", "500", "600", "700", "800", "900"],
   display: "swap",
 });
 export const satisfy = Satisfy({

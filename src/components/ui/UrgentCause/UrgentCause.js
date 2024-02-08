@@ -22,7 +22,7 @@ const UrgentCause = () => {
               className="text-3xl my-2 mt-12 tracking-wider text-secondary"
               style={{ fontFamily: cookie.style.fontFamily }}
             >
-              Urgent cause
+              Urgent Cause
             </h6>
             <h2
               className="text-4xl font-bold my-4 text-darkLight "
@@ -74,9 +74,6 @@ const UrgentCause = () => {
                 <p>Goal : $6,781.00</p>
               </div>
               {/* <Slider defaultValue={30} /> */}
-              <Button type="primary" danger className="my-4">
-                VIEW DETAILS
-              </Button>
             </div>
           ))}
         </div>
