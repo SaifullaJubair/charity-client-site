@@ -6,7 +6,7 @@ import { Button, Slider } from "antd";
 const UrgentCause = () => {
   return (
     <div
-      className="max-w-[1920px] mx-auto min-h-[90vh] mb-10 pt-10"
+      className="max-w-[1920px] mx-auto min-h-[90vh]  pt-10"
       style={{
         backgroundImage: `
        linear-gradient(0deg, rgba(237, 233, 231,.88), rgba(237, 233, 231,.88)),url('https://images.pexels.com/photos/6463400/pexels-photo-6463400.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')`,
