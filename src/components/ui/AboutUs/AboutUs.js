@@ -4,6 +4,9 @@ import { cookie, yatra } from "@/utils/Font/font";
 import { FaHandHoldingHeart, FaHandHoldingMedical } from "react-icons/fa";
 import { FaHandshakeSimple } from "react-icons/fa6";
 import { Button } from "antd";
+import a1 from "@/assets/v3.jpg";
+import a2 from "@/assets/v2.jpg";
+import a3 from "@/assets/handFlower.jpg";
 const AboutUs = () => {
   return (
     <div className="bg-light">
@@ -15,24 +18,24 @@ const AboutUs = () => {
             <div className=" grid grid-cols-2 gap-3">
               <div className=" mt-10 mx-auto ">
                 <Image
-                  src={house}
+                  src={a1}
                   alt="house"
-                  height={300}
+                  height={380}
                   width={250}
                   className="rounded-lg"
                 />
               </div>
               <div className="">
                 <Image
-                  src={house}
+                  src={a2}
                   alt="house"
                   layout="responsive"
                   height={100}
                   width={400}
-                  className="rounded-lg"
+                  className="rounded-lg mb-4"
                 />
                 <Image
-                  src={house}
+                  src={a3}
                   alt="house"
                   layout="responsive"
                   height={250}
