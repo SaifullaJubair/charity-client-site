@@ -15,8 +15,8 @@ const UrgentCause = () => {
         backgroundRepeat: "no-repeat",
       }}
     >
-      <div className="max-w-[1320px] mx-auto py-16 ">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-3 text-black mx-4 xl:mx-0">
+      <div className="max-w-[1440px] mx-auto py-16 ">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 text-black mx-4 xl:mx-0">
           <div className="p-2 rounded-md">
             <h6
               className="text-3xl my-2 mt-12 tracking-wider text-secondary"
