@@ -5,6 +5,7 @@ import UrgentCause from "@/components/ui/UrgentCause/UrgentCause";
 import LatestCauses from "@/components/ui/LatestCauses/LatestCauses";
 import OurEvents from "@/components/ui/OurEvents/OurEvents";
 import BecomeVolunteer from "@/components/ui/BecomeVolunteer/BecomeVolunteer";
+import VolunteersTeam from "@/components/ui/VolunteersTeam/VolunteersTeam";
 
 const HomePage = () => {
   return (
@@ -16,6 +17,7 @@ const HomePage = () => {
       <LatestCauses />
       <OurEvents />
       <BecomeVolunteer />
+      <VolunteersTeam />
     </div>
   );
 };
