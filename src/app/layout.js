@@ -1,14 +1,9 @@
 import "./globals.css";
-import { AntdRegistry } from "@ant-design/nextjs-registry";
 import Navbar from "@/components/shared/Navbar/Navbar";
 import TopBar from "@/components/shared/Navbar/TopBar";
 import { roboto_serif } from "@/utils/Font/font";
 import Footer from "@/components/shared/Footer/Footer";
-
-// const roboto = Sora({
-//   weight: ["400", "700"],
-//   subsets: ["latin"],
-// });
+import Providers from "@/lib/Providers";
 
 export const metadata = {
   title: "Create Next App",
@@ -17,7 +12,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <AntdRegistry>
+    <Providers>
       <html lang="en" className={roboto_serif.className}>
         <body>
           <TopBar />
@@ -26,6 +21,6 @@ export default function RootLayout({ children }) {
           <Footer />
         </body>
       </html>
-    </AntdRegistry>
+    </Providers>
   );
 }
