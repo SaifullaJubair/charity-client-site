@@ -1,3 +1,4 @@
+import { noto_sans } from "@/utils/Font/font";
 import Search from "antd/es/input/Search";
 
 const Banner = () => {
@@ -13,7 +14,10 @@ const Banner = () => {
       }}
     >
       <div className="absolute inset-0 flex flex-col items-center justify-center text-center">
-        <p className="md:text-6xl text-4xl mt-16  text-light max-w-6xl tracking-wider  font-bold">
+        <p
+          className="md:text-7xl text-4xl mt-16  text-light max-w-6xl tracking-normal  font-bold"
+          style={{ fontFamily: noto_sans.style.fontFamily }}
+        >
           Donations Even If It Is A Small Can Bring Bigger
         </p>
         <Search
