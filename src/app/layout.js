@@ -3,6 +3,7 @@ import { AntdRegistry } from "@ant-design/nextjs-registry";
 import Navbar from "@/components/shared/Navbar/Navbar";
 import TopBar from "@/components/shared/Navbar/TopBar";
 import { roboto_serif } from "@/utils/Font/font";
+import Footer from "@/components/shared/Footer/Footer";
 
 // const roboto = Sora({
 //   weight: ["400", "700"],
@@ -22,6 +23,7 @@ export default function RootLayout({ children }) {
           <TopBar />
           <Navbar />
           <div className="min-h-screen">{children}</div>
+          <Footer />
         </body>
       </html>
     </AntdRegistry>
