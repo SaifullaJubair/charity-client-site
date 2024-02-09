@@ -1,24 +1,19 @@
 "use client";
 
 import { Button, Drawer, Layout, Menu, Typography } from "antd";
-import { MenuOutlined } from "@ant-design/icons";
+import { DownOutlined, MenuOutlined } from "@ant-design/icons";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
+import { noto_sans } from "@/utils/Font/font";
+import { MenuItems } from "./Menu";
 
 const { Header, Content } = Layout;
 const { Title } = Typography;
 
-const items = [
-  { key: "1", label: "Home", href: "/" },
-  { key: "2", label: "Cause", href: "/cause" },
-  { key: "3", label: "Event", href: "/event" },
-  { key: "3", label: "Blog", href: "/blog" },
-  { key: "3", label: "Pages", href: "/pages" },
-];
-
 const Navbar = () => {
   const pathname = usePathname();
+  console.log(pathname);
   const [open, setOpen] = useState(false);
   const showDrawer = () => {
     setOpen(true);
@@ -29,8 +24,8 @@ const Navbar = () => {
   };
   return (
     <div className="shadow-lg sticky top-0 z-50 bg-white">
-      <Layout className="layout  max-w-[1700px] mx-auto  ">
-        <Header className="flex  items-center py-8 bg-white px-8 ">
+      <Layout className="layout  max-w-[1700px] mx-auto">
+        <Header className="flex  items-center py-10  px-8  bg-white ">
           <Content>
             <Link href="/">
               <Title className="m-0 text-2xl flex items-center">
@@ -39,31 +34,42 @@ const Navbar = () => {
             </Link>
           </Content>
           <Menu
-            className="md:block hidden "
+            className="md:block hidden border-none "
             disabledOverflow
             mode="horizontal"
             selectedKeys={[pathname]}
-          >
-            {items?.map((item) => (
-              <Menu.Item key={item.href} className="font-semibold  ">
-                <Link href={item.href}>{item.label}</Link>
-              </Menu.Item>
-            ))}
-          </Menu>
+            items={MenuItems}
+            style={{
+              fontFamily: noto_sans.style.fontFamily,
+              fontWeight: "500",
+              fontSize: "16px",
+              padding: " 20px",
+              background: "transparent",
+              border: "none",
+              boxShadow: "none",
+              borderRadius: "0",
+            }}
+          ></Menu>
+
           <div>
-            <Button type="primary" onClick={showDrawer} className="md:hidden">
+            <Button
+              type="primary"
+              onClick={showDrawer}
+              className="md:hidden bg-secondary"
+            >
               <MenuOutlined />
             </Button>
             <Drawer title="Charity" onClose={onClose} open={open}>
-              <Menu mode="vertical">
-                {items?.map((item) => (
-                  <Menu.Item key={item.href} className="font-semibold ">
-                    <Link href={item.href} onClick={onClose}>
-                      {item.label}
-                    </Link>
-                  </Menu.Item>
-                ))}
-              </Menu>
+              <Menu
+                mode="vertical"
+                items={MenuItems}
+                onClick={onClose}
+                className="shadow-none border-none font-semibold w-full hover:text-secondary"
+                style={{
+                  fontFamily: noto_sans.style.fontFamily,
+                  fontWeight: "500",
+                }}
+              ></Menu>
             </Drawer>
           </div>
         </Header>
