@@ -8,6 +8,7 @@ import BecomeVolunteer from "@/components/ui/BecomeVolunteer/BecomeVolunteer";
 import VolunteersTeam from "@/components/ui/VolunteersTeam/VolunteersTeam";
 import FaQ from "@/components/ui/FaQ/FaQ";
 import WelcomeBanner from "@/components/ui/WelcomeBanner/WelcomeBanner";
+import Blog from "@/components/ui/Blog/Blog";
 
 const HomePage = () => {
   return (
@@ -22,6 +23,7 @@ const HomePage = () => {
       <VolunteersTeam />
       <FaQ />
       <WelcomeBanner />
+      <Blog />
     </div>
   );
 };
