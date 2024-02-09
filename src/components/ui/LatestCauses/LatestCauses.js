@@ -50,7 +50,7 @@ const LatestCauses = () => {
                 </h6>
                 <h2
                   className="text-xl font-semibold mt-2 mb-4
-                   hover:text-secondary text-darkLight duration-500"
+                   hover:text-secondary text-darkLight tracking-tight duration-500"
                 >
                   We Help More Than 9k Children Every Year
                 </h2>
