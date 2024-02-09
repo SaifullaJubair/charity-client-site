@@ -6,6 +6,7 @@ import LatestCauses from "@/components/ui/LatestCauses/LatestCauses";
 import OurEvents from "@/components/ui/OurEvents/OurEvents";
 import BecomeVolunteer from "@/components/ui/BecomeVolunteer/BecomeVolunteer";
 import VolunteersTeam from "@/components/ui/VolunteersTeam/VolunteersTeam";
+import FaQ from "@/components/ui/FaQ/FaQ";
 
 const HomePage = () => {
   return (
@@ -18,6 +19,7 @@ const HomePage = () => {
       <OurEvents />
       <BecomeVolunteer />
       <VolunteersTeam />
+      <FaQ />
     </div>
   );
 };
