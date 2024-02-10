@@ -9,11 +9,13 @@ import VolunteersTeam from "@/components/ui/VolunteersTeam/VolunteersTeam";
 import FaQ from "@/components/ui/FaQ/FaQ";
 import WelcomeBanner from "@/components/ui/WelcomeBanner/WelcomeBanner";
 import Blog from "@/components/ui/Blog/Blog";
+import ViewCause from "@/components/ui/ViewCause/ViewCause";
 
 const HomePage = () => {
   return (
     <div className="max-w-[1920px] mx-auto">
       <Banner />
+      <ViewCause />
       <UrgentCause />
       <AboutUs />
       <WhyChoseUs />

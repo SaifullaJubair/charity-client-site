@@ -4,7 +4,7 @@ export const api = createApi({
   reducerPath: "api",
   tagTypes: ["Users", "Lenses"],
   baseQuery: fetchBaseQuery({
-    baseUrl: process.env.NEXT_server,
+    baseUrl: "http://localhost:5000",
   }),
   endpoints: (builder) => ({
     // get all users
@@ -73,5 +73,12 @@ export const api = createApi({
   }),
 });
 
-export const { useGetAllUsersQuery, useSaveUserMutation, useGetUserMutation } =
-  api;
+export const {
+  useGetAllUsersQuery,
+  useSaveUserMutation,
+  useGetUserMutation,
+  useGetCausesQuery,
+  useGetSingleCauseQuery,
+  useAddCauseMutation,
+  useUpdateCauseMutation,
+} = api;

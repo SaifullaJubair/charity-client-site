@@ -1,4 +1,5 @@
 import { noto_sans } from "@/utils/Font/font";
+import { Button } from "antd";
 import Search from "antd/es/input/Search";
 
 const Banner = () => {
@@ -20,14 +21,21 @@ const Banner = () => {
         >
           Donations Even If It Is A Small Can Bring Bigger
         </p>
-        <Search
+        {/* <Search
           placeholder="input search text"
           className="md:w-full w-4/5 max-w-xl mt-16"
           //   onSearch={onSearch}
           allowClear
           enterButton
           size="large"
-        />
+        /> */}
+        <Button
+          type="primary"
+          className="mt-16 font-bold rounded-lg bg-secondary"
+          size="large"
+        >
+          DONATE NOW
+        </Button>
       </div>
     </div>
   );
