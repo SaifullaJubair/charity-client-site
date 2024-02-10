@@ -60,6 +60,16 @@ export const api = createApi({
       }),
       invalidatesTags: ["Causes"],
     }),
+
+    // update cause
+    updateCause: builder.mutation({
+      query: (data) => ({
+        url: `/causes/${data.id}`,
+        method: "PUT",
+        body: data,
+      }),
+      invalidatesTags: ["Causes"],
+    }),
   }),
 });
 
