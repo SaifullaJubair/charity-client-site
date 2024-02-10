@@ -12,8 +12,8 @@ const Resister = () => {
   const dispatch = useDispatch();
   const router = useRouter();
 
-  const { user, isLoading, error } = useSelector((state) => state.user);
-  const [saveUser] = useSaveUserMutation();
+  const { user, error } = useSelector((state) => state.user);
+  const [saveUser, { isLoading }] = useSaveUserMutation();
   useEffect(() => {
     if (user.email) {
       router.push("/");
@@ -65,7 +65,7 @@ const Resister = () => {
         <form onSubmit={handleResister} className="space-y-12">
           <div className="space-y-4">
             <div>
-              <label for="email" className="block mb-2 text-sm">
+              <label for="email" className="block mb-2 font-semibold">
                 Full Name
               </label>
               <input
@@ -73,11 +73,11 @@ const Resister = () => {
                 name="name"
                 type="text"
                 placeholder="your name"
-                className="w-full px-3 py-2 border rounded-md border-gray-300 bg-gray-50 text-gray-800"
+                className="w-full px-3 py-3 border rounded-md border-gray-300 bg-gray-50 text-gray-800"
               />
             </div>
             <div>
-              <label for="email" className="block mb-2 text-sm">
+              <label for="email" className="block mb-2 font-semibold">
                 Email address
               </label>
               <input
@@ -85,28 +85,21 @@ const Resister = () => {
                 name="email"
                 id="email"
                 placeholder="leroy@jenkins.com"
-                className="w-full px-3 py-2 border rounded-md border-gray-300 bg-gray-50 text-gray-800"
+                className="w-full px-3 py-3 border rounded-md border-gray-300 bg-gray-50 text-gray-800"
               />
             </div>
             <div>
-              <div className="flex justify-between mb-2">
-                <label for="password" className="text-sm">
+              <div>
+                <label for="password" className="font-semibold block mb-2 ">
                   Password
                 </label>
-                <a
-                  rel="noopener noreferrer"
-                  href="#"
-                  className="text-xs hover:underline text-gray-600"
-                >
-                  Forgot password?
-                </a>
               </div>
               <input
                 type="password"
                 name="password"
                 id="password"
                 placeholder="*****"
-                className="w-full px-3 py-2 border rounded-md border-gray-300 bg-gray-50 text-gray-800"
+                className="w-full px-3 py-3 border rounded-md border-gray-300 bg-gray-50 text-gray-800"
               />
             </div>
           </div>

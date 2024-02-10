@@ -1,117 +1,88 @@
-// "use client";
-// import { useEffect } from "react";
-// import { toast } from "react-hot-toast";
-// import { useAppDispatch, useAppSelector } from "../redux/hook";
-// import { loginUser } from "../redux/features/user/userSlice";
-// import Loader from "../utils/Loader";
-// import Link from "next/link";
+"use client";
 
-// const Login = () => {
-//   const dispatch = useAppDispatch();
-//   // const navigate = useNavigate();
-//   // const location = useLocation();
-//   // const from = location.state?.from?.pathname || "/";
+import { useEffect } from "react";
+import { toast } from "react-hot-toast";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useDispatch, useSelector } from "react-redux";
+import { loginUser } from "@/redux/features/user/userSlice";
 
-//   const { user, isLoading, error } = useAppSelector((state) => state.user);
+const Login = () => {
+  const { user, error } = useSelector((state) => state.user);
+  const dispatch = useDispatch();
+  const router = useRouter();
 
-//   const handleLogin = (event) => {
-//     event.preventDefault();
-//     const email = event.target.email.value;
-//     const password = event.target.password.value;
-//     dispatch(loginUser({ email, password }));
-//   };
+  useEffect(() => {
+    if (user.email) {
+      router.push("/");
+      toast.success("Login Successful");
+    }
+  }, [user?.email]);
+  const handleLogin = (event) => {
+    event.preventDefault();
+    const email = event.target.email.value;
+    const password = event.target.password.value;
+    dispatch(loginUser({ email, password }));
+  };
 
-//   // useEffect(() => {
-//   //   if (user.email) {
-//   //     navigate(from, { replace: true });
-//   //   }
-//   // }, [user?.email]);
+  useEffect(() => {
+    if (error) {
+      toast.error(error);
+    }
+  }, [error]);
 
-//   useEffect(() => {
-//     if (error) {
-//       toast.error(error);
-//     }
-//   }, [error]);
-
-//   if (isLoading) {
-//     return (
-//       <div className="flex justify-center items-center h-screen">
-//         <Loader />
-//       </div>
-//     );
-//   }
-
-//   return (
-//     <div className=" flex flex-col justify-center py-14">
-//       <div className="relative py-3 sm:max-w-xl sm:mx-auto">
-//         <div className="relative px-4 py-7 bg-white shadow-lg sm:rounded-3xl sm:p-10">
-//           <div className="max-w-md mx-auto">
-//             <div>
-//               <h1 className="text-2xl font-semibold text-center">Sign In</h1>
-//             </div>
-//             <form onSubmit={handleLogin} className="divide-y divide-gray-200">
-//               <div className="py-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7">
-//                 <div className="relative">
-//                   <input
-//                     id="email"
-//                     name="email"
-//                     type="text"
-//                     className="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600"
-//                     placeholder="Email address"
-//                     required
-//                   />
-//                   <label
-//                     htmlFor="email"
-//                     className="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm"
-//                   >
-//                     Email Address
-//                   </label>
-//                 </div>
-//                 <div className="relative">
-//                   <input
-//                     id="password"
-//                     name="password"
-//                     type="password"
-//                     className="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600"
-//                     placeholder="Password"
-//                     required
-//                   />
-//                   <label
-//                     htmlFor="password"
-//                     className="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm"
-//                   >
-//                     Password
-//                   </label>
-//                 </div>
-//                 <div className="relative">
-//                   <button
-//                     type="submit"
-//                     className="text-black font-medium rounded-md bg-orange-300 px-4 py-2 hover:bg-orange-500 duration-300 w-full"
-//                   >
-//                     {isLoading ? "Loading..." : "Login"}
-//                   </button>
-//                 </div>
-//                 <p className="max-w-xs text-base">
-//                   If you don not have account!! Please
-//                   <Link href="/register" className="text-rose-600 underline">
-//                     Register
-//                   </Link>
-//                 </p>
-//               </div>
-//             </form>
-//           </div>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default Login;
-
-import React from "react";
-
-const page = () => {
-  return <div></div>;
+  return (
+    <div className="flex flex-col max-w-md p-6  mx-auto  my-20 rounded-md sm:p-10 bg-gray-50 text-gray-800">
+      <div className="mb-8 text-center">
+        <h1 className="my-3 text-4xl font-bold">Login</h1>
+        <p className="text-sm text-gray-600">Login to access your account</p>
+      </div>
+      <form onSubmit={handleLogin} className="space-y-12">
+        <div className="space-y-4">
+          <div>
+            <label for="email" className="block mb-2 font-semibold">
+              Email address
+            </label>
+            <input
+              type="email"
+              name="email"
+              placeholder="leroy@jenkins.com"
+              className="w-full px-3 py-3 border rounded-md border-gray-300 bg-gray-50 text-gray-800"
+            />
+          </div>
+          <div>
+            <div>
+              <label for="password" className="font-semibold block mb-2">
+                Password
+              </label>
+            </div>
+            <input
+              type="password"
+              name="password"
+              placeholder="*****"
+              className="w-full px-3 py-3 border rounded-md border-gray-300 bg-gray-50 text-gray-800"
+            />
+          </div>
+        </div>
+        <div className="space-y-2">
+          <div>
+            <button
+              type="submit"
+              className="w-full px-8 py-3 font-semibold rounded-md bg-orange-600 text-gray-50"
+            >
+              Login
+            </button>
+          </div>
+          <p className="px-6 text-sm text-center text-gray-600">
+            Already have account!! Please
+            <Link href="/register" className="hover:underline text-orange-600">
+              Register
+            </Link>
+          </p>
+        </div>
+      </form>
+    </div>
+  );
 };
 
-export default page;
+export default Login;
