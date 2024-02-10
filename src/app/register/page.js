@@ -6,18 +6,20 @@ import { useDispatch, useSelector } from "react-redux";
 import { useSaveUserMutation } from "@/redux/api/apiSlice";
 import { createUser } from "@/redux/features/user/userSlice";
 import { useEffect } from "react";
+import { useRouter } from "next/navigation";
 
 const Resister = () => {
   const dispatch = useDispatch();
-  // // const navigate = useNavigate();
+  const router = useRouter();
 
   const { user, isLoading, error } = useSelector((state) => state.user);
   const [saveUser] = useSaveUserMutation();
-  // useEffect(() => {
-  //   if (user.email) {
-  //     navigate("/");
-  //   }
-  // }, [user?.email]);
+  useEffect(() => {
+    if (user.email) {
+      router.push("/");
+      toast.success("User Created Successfully");
+    }
+  }, [user?.email]);
 
   useEffect(() => {
     if (error) {
@@ -49,7 +51,6 @@ const Resister = () => {
     }
     if (name.length > 0 && password.length > 5) {
       dispatch(createUser({ email, password }));
-      toast.success("User created successfully");
       saveUser(user);
     }
   };
