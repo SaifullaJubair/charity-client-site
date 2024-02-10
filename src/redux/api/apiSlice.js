@@ -33,14 +33,22 @@ export const api = createApi({
       }),
     }),
 
-    //  causes
-
+    // ---- CAUSES ---
+    // get all causes
     getCauses: builder.query({
       query: () => ({
         url: "/causes",
         method: "GET",
       }),
       providesTags: ["Causes"],
+    }),
+
+    // get single cause
+    getSingleCause: builder.query({
+      query: (id) => ({
+        url: `/causes/${id}`,
+        method: "GET",
+      }),
     }),
   }),
 });
