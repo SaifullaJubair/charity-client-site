@@ -32,6 +32,16 @@ export const api = createApi({
         body: data,
       }),
     }),
+
+    //  causes
+
+    getCauses: builder.query({
+      query: () => ({
+        url: "/causes",
+        method: "GET",
+      }),
+      providesTags: ["Causes"],
+    }),
   }),
 });
 
