@@ -12,11 +12,12 @@ import {
 import { DownOutlined, MenuOutlined } from "@ant-design/icons";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { noto_sans } from "@/utils/Font/font";
 import { MenuItems } from "./Menu";
 import { useDispatch, useSelector } from "react-redux";
 import { logOut } from "@/redux/features/user/userSlice";
+import Loader from "@/utils/Loader/Loader";
 
 const { Header, Content } = Layout;
 const { Title } = Typography;
@@ -89,6 +90,7 @@ const items = [
     ),
   },
 ];
+
 const Navbar = () => {
   const { user } = useSelector((state) => state.user);
   // console.log(user);
@@ -96,7 +98,6 @@ const Navbar = () => {
   const handleLogOut = () => {
     dispatch(logOut());
   };
-  const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const showDrawer = () => {
     setOpen(true);
@@ -105,6 +106,34 @@ const Navbar = () => {
   const onClose = () => {
     setOpen(false);
   };
+  const pathname = usePathname();
+
+  const [active, setActive] = useState("");
+  useEffect(() => {
+    if (pathname === "/") {
+      setActive(1);
+    } else if (pathname === "/cause") {
+      setActive(2);
+    } else if (
+      pathname === "/about" ||
+      pathname === "/contact-us" ||
+      pathname === "/blog" ||
+      pathname === "/event" ||
+      pathname === "/volunteer" ||
+      pathname === "/faq"
+    ) {
+      setActive(3);
+    } else if (pathname === "/statistic") {
+      setActive(4);
+    } else if (pathname === "/register") {
+      setActive(5);
+    } else if (pathname === "/login") {
+      setActive(6);
+    } else if (pathname === "/dashboard") {
+      setActive(7);
+    }
+  }, [pathname]);
+
   return (
     <div className="shadow-lg sticky top-0 z-50 bg-white">
       <Layout className="layout  max-w-[1700px] mx-auto">
@@ -118,29 +147,23 @@ const Navbar = () => {
           </Content>
           <Menu
             className="md:block hidden border-none "
-            disabledOverflow
             mode="horizontal"
             selectedKeys={[pathname]}
-            style={{
-              fontFamily: noto_sans.style.fontFamily,
-              fontWeight: "500",
-              fontSize: "16px",
-              padding: " 20px",
-              background: "transparent",
-              border: "none",
-              boxShadow: "none",
-              borderRadius: "0",
-            }}
+            defaultSelectedKeys={[pathname]}
           >
             <Menu.Item
               key="1"
-              className="font-semibold hover:text-secondary duration-200"
+              className={`font-semibold hover:text-secondary duration-200 ${
+                active === 1 ? "text-secondary font-bold" : ""
+              }`}
             >
               <Link href={"/"}>Home</Link>
             </Menu.Item>
             <Menu.Item
               key="2"
-              className="font-semibold hover:text-secondary duration-200"
+              className={`font-semibold hover:text-secondary duration-200 ${
+                active === 2 ? "text-secondary font-bold" : ""
+              }`}
             >
               <Link href="/cause">Cause</Link>
             </Menu.Item>
@@ -148,7 +171,9 @@ const Navbar = () => {
               menu={{
                 items,
               }}
-              className="text-primary mx-2 px-4 font-semibold"
+              className={`font-semibold text-primary mx-2 hover:text-secondary duration-200 ${
+                active === 3 ? "text-secondary font-bold" : ""
+              }`}
             >
               <a onClick={(e) => e.preventDefault()}>
                 <Space>
@@ -159,7 +184,9 @@ const Navbar = () => {
             </Dropdown>
             <Menu.Item
               key="4"
-              className="font-semibold hover:text-secondary duration-200"
+              className={`font-semibold hover:text-secondary duration-200 ${
+                active === 4 ? "text-secondary font-bold" : ""
+              }`}
             >
               <Link href="/statistic">Statistic</Link>
             </Menu.Item>
@@ -168,9 +195,11 @@ const Navbar = () => {
               <>
                 <Menu.Item
                   key="7"
-                  className="font-semibold hover:text-secondary duration-200"
+                  className={`font-semibold hover:text-secondary duration-200 ${
+                    active === 7 ? "text-secondary font-bold" : ""
+                  }`}
                 >
-                  <Link href="/register">Dashboard</Link>
+                  <Link href="/dashboard">Dashboard</Link>
                 </Menu.Item>
                 <Menu.Item
                   key={"8"}
@@ -184,13 +213,17 @@ const Navbar = () => {
               <>
                 <Menu.Item
                   key="5"
-                  className="font-semibold hover:text-secondary duration-200"
+                  className={`font-semibold hover:text-secondary duration-200 ${
+                    active === 5 ? "text-secondary font-bold" : ""
+                  }`}
                 >
                   <Link href="/register">Register</Link>
                 </Menu.Item>
                 <Menu.Item
                   key="6"
-                  className="font-semibold hover:text-secondary duration-200"
+                  className={`font-semibold hover:text-secondary duration-200 ${
+                    active === 6 ? "text-secondary font-bold" : ""
+                  }`}
                 >
                   <Link href="/login">Login</Link>
                 </Menu.Item>

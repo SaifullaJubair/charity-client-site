@@ -4,7 +4,7 @@ export const api = createApi({
   reducerPath: "api",
   tagTypes: ["Users", "Lenses"],
   baseQuery: fetchBaseQuery({
-    baseUrl: "http://localhost:5000",
+    baseUrl: process.env.NEXT_server,
   }),
   endpoints: (builder) => ({
     // get all users
