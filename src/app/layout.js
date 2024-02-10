@@ -5,6 +5,7 @@ import { roboto_serif } from "@/utils/Font/font";
 import Footer from "@/components/shared/Footer/Footer";
 import Providers from "@/lib/Providers";
 import { Toaster } from "react-hot-toast";
+import Auth from "@/lib/Auth";
 
 export const metadata = {
   title: "Create Next App",
@@ -16,6 +17,7 @@ export default function RootLayout({ children }) {
     <Providers>
       <html lang="en" className={roboto_serif.className}>
         <body>
+          <Auth />
           <TopBar />
           <Navbar />
           <div className="min-h-screen">{children}</div>
