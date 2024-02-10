@@ -1,8 +1,14 @@
 const Loader = () => {
   return (
-    <div className="flex justify-center items-center w-full h-screen bg-gray-100">
-      <div className="relative w-16 h-16 animate-spin  rounded-full bg-gradient-to-r from-lime-500 via-indigo-700 ">
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[54px] h-[54px] bg-white rounded-full border-2 border-white"></div>
+    <div>
+      {/* create a spinner  */}
+
+      <div className="flex items-center justify-center  min-h-screen space-x-2">
+        <div className="text-5xl font-bold text-orange-500 mx-2">Loading</div>
+
+        <div className="w-4 h-4 rounded-full animate-pulse bg-orange-600"></div>
+        <div className="w-4 h-4 rounded-full animate-pulse bg-orange-600"></div>
+        <div className="w-4 h-4 rounded-full animate-pulse bg-orange-600"></div>
       </div>
     </div>
   );

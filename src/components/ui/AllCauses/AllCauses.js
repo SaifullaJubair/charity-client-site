@@ -2,7 +2,9 @@
 import { useGetCausesQuery } from "@/redux/api/apiSlice";
 import { cookie, yatra } from "@/utils/Font/font";
 import Loader from "@/utils/Loader/Loader";
+import { Button } from "antd";
 import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
 
 const AllCauses = () => {
@@ -100,6 +102,14 @@ const AllCauses = () => {
                 <p className="text-gry-700 text-sm">
                   {cause.description.substring(0, 100) + "..."}
                 </p>
+                <Button type="primary" className="mt-4 mr-4 bg-secondary">
+                  Donate
+                </Button>
+                <Link href={`/cause/${cause._id}`}>
+                  <Button type="primary" className="mt-4 bg-secondary">
+                    Details
+                  </Button>
+                </Link>
               </div>
             </div>
           ))}

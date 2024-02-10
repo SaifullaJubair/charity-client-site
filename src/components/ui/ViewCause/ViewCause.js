@@ -2,7 +2,6 @@
 
 import { cookie, yatra } from "@/utils/Font/font";
 import Image from "next/image";
-import house from "@/assets/house.jpg";
 import { Button, Slider } from "antd";
 import { useGetCausesQuery } from "@/redux/api/apiSlice";
 import { useState } from "react";
@@ -36,6 +35,9 @@ const ViewCause = () => {
     causesData = causesData.slice(0, 3);
   }
 
+  if (isLoading) {
+    return <Loader />;
+  }
   return (
     <div
       className="max-w-[1920px] mx-auto min-h-[90vh]  pt-10"
@@ -113,12 +115,25 @@ const ViewCause = () => {
               >
                 {cause?.title}
               </h2>
-              <p className="text-gry-700 text-sm">
-                {cause?.description ? cause?.description.substring(0, 100) : ""}
-              </p>
+
               <div className=" text-gray-700 font-semibold mt-2">
                 <p>Raised : {cause?.raised}$</p>
-                <p>Goal : {cause?.goal}</p>
+                <p className="my-1">Goal : {cause?.goal}</p>
+                <p className="mt-2">
+                  {(cause?.raised / cause?.goal) * 100 || 0}%
+                </p>
+                <div className="my-2 h-2 w-9/12 bg-gray-200 rounded-lg overflow-hidden">
+                  <div
+                    className="h-full bg-green-500 rounded-lg"
+                    style={{
+                      width: `${(cause?.raised / cause?.goal) * 100 || 0}%`,
+                      transition: "width 0.5s",
+                    }}
+                  ></div>
+                </div>
+                <Button type="primary" className="mt-4 bg-secondary">
+                  View Details
+                </Button>
               </div>
               {/* <Slider defaultValue={30} /> */}
             </div>
