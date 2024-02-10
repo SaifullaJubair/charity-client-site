@@ -50,6 +50,16 @@ export const api = createApi({
         method: "GET",
       }),
     }),
+
+    // create cause
+    addCause: builder.mutation({
+      query: (data) => ({
+        url: "/causes",
+        method: "POST",
+        body: data,
+      }),
+      invalidatesTags: ["Causes"],
+    }),
   }),
 });
 
