@@ -305,7 +305,7 @@ const Footer = () => {
           </div>
           <Divider className="   bg-white" />
 
-          <div class=" border-t border-gray-100 border-2  ">
+          <div className=" border-t border-gray-100 border-2  ">
             <div className="sm:flex sm:justify-between">
               <p className="text-xs text-white">
                 &copy; 2022. Company Name. All rights reserved.

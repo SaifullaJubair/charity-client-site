@@ -4,6 +4,7 @@ import TopBar from "@/components/shared/Navbar/TopBar";
 import { roboto_serif } from "@/utils/Font/font";
 import Footer from "@/components/shared/Footer/Footer";
 import Providers from "@/lib/Providers";
+import { Toaster } from "react-hot-toast";
 
 export const metadata = {
   title: "Create Next App",
@@ -19,6 +20,7 @@ export default function RootLayout({ children }) {
           <Navbar />
           <div className="min-h-screen">{children}</div>
           <Footer />
+          <Toaster />
         </body>
       </html>
     </Providers>
