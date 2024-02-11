@@ -132,7 +132,7 @@ const Navbar = () => {
     } else if (pathname === "/dashboard") {
       setActive(7);
     } else if (pathname === "/donation") {
-      setActive(7);
+      setActive(9);
     }
   }, [pathname]);
 
@@ -192,17 +192,17 @@ const Navbar = () => {
             >
               <Link href="/statistic">Statistic</Link>
             </Menu.Item>
-            <Menu.Item
-              key="8"
-              className={`font-semibold hover:text-secondary duration-200 ${
-                active === 8 ? "text-secondary font-bold" : ""
-              }`}
-            >
-              <Link href="/donation">Donation</Link>
-            </Menu.Item>
 
             {user?.email ? (
               <>
+                <Menu.Item
+                  key="9"
+                  className={`font-semibold hover:text-secondary duration-200 ${
+                    active === 9 ? "text-secondary font-bold" : ""
+                  }`}
+                >
+                  <Link href="/donation">Donation</Link>
+                </Menu.Item>
                 <Menu.Item
                   key="7"
                   className={`font-semibold hover:text-secondary duration-200 ${
@@ -299,9 +299,9 @@ const Navbar = () => {
                   <Link href="/statistic">Statistic</Link>
                 </Menu.Item>
                 <Menu.Item
-                  key="8"
+                  key="9"
                   className={`font-semibold hover:text-secondary duration-200 ${
-                    active === 8 ? "text-secondary font-bold" : ""
+                    active === 9 ? "text-secondary font-bold" : ""
                   }`}
                 >
                   <Link href="/donation">Donation</Link>
