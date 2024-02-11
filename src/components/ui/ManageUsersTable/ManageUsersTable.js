@@ -1,20 +1,36 @@
 "use client";
 import { Button, Modal, Table } from "antd";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { DeleteFilled, PlusOutlined, EditOutlined } from "@ant-design/icons";
 import { useRouter } from "next/navigation";
-import { useGetAllUsersQuery } from "@/redux/api/apiSlice";
+import {
+  useGetAllUsersQuery,
+  useUpdateUserRoleMutation,
+} from "@/redux/api/apiSlice";
 import Link from "next/link";
 import Loader from "@/utils/Loader/Loader";
+import toast from "react-hot-toast";
 
 const ManageUsersTable = () => {
   const { data: users, isLoading } = useGetAllUsersQuery(undefined, {
     refetchOnMountOrArgChange: true,
   });
   const router = useRouter();
+  const [updateUserRole, { isLoading: isUpdating, error, isSuccess }] =
+    useUpdateUserRoleMutation();
 
+  useEffect(() => {
+    if (isSuccess) {
+      toast.success("User role updated successfully");
+    }
+    if (error) {
+      toast.error("Something went wrong... 😔 User role can't update");
+    }
+  }, [isSuccess, error]);
   const handleUpdateRoleWithConfirmation = (record) => {
-    const handleOk = async () => {};
+    const handleOk = () => {
+      updateUserRole({ id: record._id });
+    };
 
     Modal.confirm({
       title: `Are you sure you want to make Admin this ${record.email} user?`,

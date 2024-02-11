@@ -13,6 +13,7 @@ export const api = createApi({
         url: "/users",
         method: "GET",
       }),
+      providesTags: ["Users"],
     }),
 
     // register user
@@ -33,6 +34,14 @@ export const api = createApi({
       }),
     }),
 
+    // update user role
+    updateUserRole: builder.mutation({
+      query: ({ id }) => ({
+        url: `/users/${id}`,
+        method: "PUT",
+      }),
+      invalidatesTags: ["Users"],
+    }),
     // ---- CAUSES ---
     // get all causes
     getCauses: builder.query({
@@ -113,6 +122,7 @@ export const {
   useGetAllUsersQuery,
   useSaveUserMutation,
   useGetUserMutation,
+  useUpdateUserRoleMutation,
   useGetCausesQuery,
   useGetSingleCauseQuery,
   useAddCauseMutation,
