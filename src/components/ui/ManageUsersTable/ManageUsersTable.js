@@ -33,7 +33,7 @@ const ManageUsersTable = () => {
     };
 
     Modal.confirm({
-      title: `Are you sure you want to make Admin this ${record.email} user?`,
+      title: `Are you sure you want to change this user role?`,
       okText: "Update",
       okButtonProps: {
         style: {
