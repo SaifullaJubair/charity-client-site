@@ -2,7 +2,7 @@
 import { useGetCausesQuery } from "@/redux/api/apiSlice";
 import { cookie, yatra } from "@/utils/Font/font";
 import Loader from "@/utils/Loader/Loader";
-import { Button } from "antd";
+import { Button, Select } from "antd";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
@@ -12,12 +12,16 @@ const AllCauses = () => {
     pollingInterval: 30000,
     refetchOnMountOrArgChange: true,
   });
+  const [selectValue, setSelectValue] = useState("");
   const [searchValue, setSearchValue] = useState("");
   const handleSearchInputChange = (e) => {
     setSearchValue(e.target.value);
   };
   //   console.log(causes);
-
+  const handleChange = (value) => {
+    console.log(`selected ${value}`);
+    setSelectValue(value);
+  };
   let causesData;
   if (searchValue) {
     causesData = causes?.filter((cause) => {
@@ -26,6 +30,10 @@ const AllCauses = () => {
         cause.title.toLowerCase().includes(searchValue.toLocaleLowerCase()) ||
         cause._id.toLowerCase().includes(searchValue)
       );
+    });
+  } else if (selectValue) {
+    causesData = causes?.filter((cause) => {
+      return cause.name === selectValue;
     });
   } else {
     causesData = causes;
@@ -52,6 +60,57 @@ const AllCauses = () => {
           <p className="text-2xl font-semibold my-6 text-gray-700">
             Causes available {causesData.length}
           </p>
+          {/* <div>
+            <label
+              htmlFor="cause"
+              className="block text-sm font-medium text-gray-900"
+            >
+              Search by Causes
+            </label>
+
+            <select
+              name="cause"
+              id="cause"
+              className="mt-1.5 w-full px-5 py-3 text-lg  rounded-md border-gray-300 text-gray-700 sm:text-sm"
+            >
+              <option className="mt-1" value="">
+                Please select
+              </option>
+              <option className="mt-1" value="JM">
+                John Mayer
+              </option>
+              <option className="mt-1" value="SRV">
+                Stevie Ray Vaughn
+              </option>
+              <option className="mt-1" value="JH">
+                Jimi Hendrix
+              </option>
+              <option className="mt-1" value="BBK">
+                B.B King
+              </option>
+              <option className="mt-1" value="AK">
+                Albert King
+              </option>
+              <option className="mt-1" value="BG">
+                Buddy Guy
+              </option>
+              <option className="mt-1" value="EC">
+                Eric Clapton
+              </option>
+            </select>
+          </div> */}
+
+          <Select
+            placeholder="Select a cause"
+            style={{ width: 300, height: 40 }}
+            onChange={handleChange}
+          >
+            {causes.map((cause) => (
+              <Select.Option key={cause.name} value={cause.name}>
+                {cause.name}
+              </Select.Option>
+            ))}
+          </Select>
           <div className="text-gray-500 max-w-xl  w-full my-6">
             <div>
               {/* <label htmlFor="name" className="block mb-2 font-semibold">
