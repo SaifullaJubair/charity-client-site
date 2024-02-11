@@ -16,7 +16,7 @@ const HomePage = () => {
     <div className="max-w-[1920px] mx-auto">
       <Banner />
       <ViewCause />
-      <UrgentCause />
+      {/* <UrgentCause /> */}
       <AboutUs />
       <WhyChoseUs />
       <LatestCauses />

@@ -17,6 +17,13 @@ const ViewCause = () => {
   const handleSearchInputChange = (e) => {
     setSearchValue(e.target.value);
   };
+  const currentDate = new Date();
+  const formattedDate = new Intl.DateTimeFormat("en-US", {
+    day: "numeric",
+    month: "short",
+    year: "numeric",
+  }).format(currentDate);
+  console.log(formattedDate);
   //   console.log(causes);
 
   let causesData;
@@ -131,9 +138,11 @@ const ViewCause = () => {
                     }}
                   ></div>
                 </div>
-                <Button type="primary" className="mt-4 bg-secondary">
-                  View Details
-                </Button>
+                <Link href={`/cause/${cause?._id}`}>
+                  <Button type="primary" className="mt-4 bg-secondary">
+                    View Details
+                  </Button>
+                </Link>
               </div>
               {/* <Slider defaultValue={30} /> */}
             </div>

@@ -70,6 +70,26 @@ export const api = createApi({
       }),
       invalidatesTags: ["Causes"],
     }),
+
+    // donation history
+    getAllDonations: builder.query({
+      query: () => ({
+        url: "/donations",
+        method: "GET",
+      }),
+      providesTags: ["Donations"],
+    }),
+
+    addDonate: builder.mutation({
+      query: (data) => ({
+        url: "/donations",
+        method: "POST",
+        body: data,
+      }),
+      invalidatesTags: ["Donations"],
+    }),
+
+    // endpoints
   }),
 });
 
@@ -81,4 +101,6 @@ export const {
   useGetSingleCauseQuery,
   useAddCauseMutation,
   useUpdateCauseMutation,
+  useGetAllDonationsQuery,
+  useAddDonateMutation,
 } = api;
