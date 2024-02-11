@@ -80,6 +80,13 @@ export const api = createApi({
       providesTags: ["Donations"],
     }),
 
+    getDonationByEmail: builder.query({
+      query: (email) => ({
+        url: `/donations/${email}`,
+        method: "GET",
+      }),
+    }),
+
     addDonate: builder.mutation({
       query: (data) => ({
         url: "/donations",
@@ -103,4 +110,5 @@ export const {
   useUpdateCauseMutation,
   useGetAllDonationsQuery,
   useAddDonateMutation,
+  useGetDonationByEmailQuery,
 } = api;
