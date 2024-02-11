@@ -20,7 +20,8 @@ const Sidebar = ({ children }) => {
     { key: "2", label: "Manage Causes", href: "/admin/manage-causes" },
     { key: "3", label: "Add Cause", href: "/admin/add-cause" },
     { key: "4", label: "Manage Users", href: "/admin/manage-users" },
-    { key: "5", label: "Back Home", href: "/" },
+    { key: "5", label: "All Donation", href: "/admin/all-donation" },
+    { key: "6", label: "Back Home", href: "/" },
   ];
 
   const pathname = usePathname();

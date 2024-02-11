@@ -5,27 +5,20 @@ import { DeleteFilled, PlusOutlined, EditOutlined } from "@ant-design/icons";
 import { useRouter } from "next/navigation";
 import {
   useDeleteCauseMutation,
+  useGetAllDonationsQuery,
   useGetCausesQuery,
 } from "@/redux/api/apiSlice";
 import Link from "next/link";
 import toast from "react-hot-toast";
 import Loader from "@/utils/Loader/Loader";
 
-const ManageCausesTable = () => {
-  const { data: causes, isLoading } = useGetCausesQuery(undefined, {
+const AllDonationTable = () => {
+  const { data: donations, isLoading } = useGetAllDonationsQuery(undefined, {
     refetchOnMountOrArgChange: true,
   });
-  const [deleteCause, { isLoading: isDeleting, error, isSuccess }] =
-    useDeleteCauseMutation();
-  // console.log(causes);
+
+  console.log(donations);
   const router = useRouter();
-  useEffect(() => {
-    if (error) {
-      toast.error("Something went wrong... 😔 Cause can't delete");
-    } else if (isSuccess) {
-      toast.success("Cause deleted successfully");
-    }
-  }, [error, isSuccess]);
 
   const handleDeleteWithConfirmation = (id) => {
     const handleOk = () => {
@@ -63,73 +56,51 @@ const ManageCausesTable = () => {
 
     {
       title: "Causes",
+      dataIndex: "causeName",
+      key: "cause_name",
+    },
+    {
+      title: "Donner Name",
       dataIndex: "name",
-      key: "name",
+      key: "donner_name",
     },
     {
-      title: "Title",
-      dataIndex: "title",
-      key: "name",
+      title: "Donner Email",
+      dataIndex: "email",
+      key: "email",
     },
     {
-      title: "Goal",
-      dataIndex: "goal",
-      key: "goal",
+      title: "Mobile No",
+      dataIndex: "number",
+      key: "number",
     },
     {
-      title: "Raised",
-      dataIndex: "raised",
-      key: "raised",
+      title: "Amount",
+      dataIndex: "amount",
+      key: "amount",
     },
-
     {
-      title: "Action",
-      key: "action",
-
-      render: (record) => {
-        return (
-          <div>
-            <Link href={`/admin/edit-cause/${record._id}`}>
-              <Button className="text-xl" type="link">
-                <EditOutlined />
-              </Button>
-            </Link>
-            <Button
-              className="text-xl"
-              type="link"
-              danger
-              onClick={() => handleDeleteWithConfirmation(record._id)}
-            >
-              <DeleteFilled />
-            </Button>
-          </div>
-        );
-      },
+      title: "Date",
+      dataIndex: "date",
+      key: "date",
     },
   ];
   if (isLoading) {
     return <Loader />;
   }
-  if (causes.length === 0) {
+  if (donations.length === 0) {
     return <Loader />;
   }
   return (
     <div className=" lg:p-6 md:p-6 p-4 rounded-xl lg:min-h-screen">
       <div className="flex justify-between items-center pb-4">
-        <h1 className="text-2xl ">Manage Causes</h1>
-        <Button
-          type="link"
-          className="bg-secondary text-white"
-          onClick={() => router.push("/admin/add-cause")}
-        >
-          <PlusOutlined /> Add New cause{" "}
-        </Button>
+        <h1 className="text-2xl ">All Donations</h1>
       </div>
       <hr />
       <Table
         onChange={(pagination) => handleTableChange(pagination)}
         className="mt-4"
-        dataSource={causes}
+        dataSource={donations}
         columns={columns}
         scroll={{ x: "100%" }}
         style={{
@@ -148,4 +119,4 @@ const ManageCausesTable = () => {
   );
 };
 
-export default ManageCausesTable;
+export default AllDonationTable;
