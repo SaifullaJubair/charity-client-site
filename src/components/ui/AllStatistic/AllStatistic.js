@@ -13,7 +13,7 @@ const AllStatistic = () => {
   if (isLoading) {
     return <Loader />;
   }
-  if (data.length === 0) {
+  if (data?.length === 0) {
     return (
       <div className="w-full h-full flex justify-center items-center">
         <Empty description={"You have no donation"} />
@@ -53,7 +53,7 @@ const AllStatistic = () => {
     <div>
       <div>
         <p className="text-3xl font-bold text-gray-700">
-          You get {data.length} Donations.
+          You get {data?.length} Donations.
         </p>
       </div>
       <div className="mt-6">

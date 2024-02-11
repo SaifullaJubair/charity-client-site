@@ -17,7 +17,7 @@ const StatisticPage = () => {
     return <Loader />;
   }
 
-  if (data.length === 0) {
+  if (data?.length === 0) {
     return (
       <div className=" mt-44">
         <Empty
@@ -60,7 +60,7 @@ const StatisticPage = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-12 text-black mx-4 xl:mx-0 my-6">
           <div className="col-span-2">
             <h2 className="text-3xl font-bold mb-4">
-              Your {data.length} Donation Statistics compare by donation amount
+              Your {data?.length} Donation Statistics compare by donation amount
             </h2>
             <Chart
               options={chartOptions}

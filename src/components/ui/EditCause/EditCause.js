@@ -32,6 +32,8 @@ const EditCauseForm = () => {
     event.preventDefault();
     const title = event.target.title.value;
     const photoUrl = event.target.photoUrl.value;
+    const img = event.target.img.value;
+    const img2 = event.target.img2.value;
     const category = event.target.category.value;
 
     const goal = event.target.goal.value;
@@ -43,6 +45,8 @@ const EditCauseForm = () => {
       name: category,
       title,
       primary_img: photoUrl,
+      img,
+      img2,
       title,
       goal,
       raised,
@@ -97,12 +101,32 @@ const EditCauseForm = () => {
                   <div className="md:col-span-2">
                     <label>Photo Url</label>
                     <input
-                      type="text"
+                      type="url"
                       name="photoUrl"
                       className="h-10 border mt-1 rounded px-4 w-full border-gray-400 focus:outline-none focus:border focus:border-gray-700"
                       placeholder="Photo Url...."
                       required
                       defaultValue={cause?.primary_img}
+                    />
+                  </div>
+                  <div className="md:col-span-2">
+                    <label>Photo Url Optional 1</label>
+                    <input
+                      type="url"
+                      name="img"
+                      className="h-10 border mt-1 rounded px-4 w-full border-gray-400 focus:outline-none focus:border focus:border-gray-700"
+                      placeholder="Photo Url...."
+                      defaultValue={cause?.img}
+                    />
+                  </div>
+                  <div className="md:col-span-2">
+                    <label>Photo Url Optional 2</label>
+                    <input
+                      type="url"
+                      name="img2"
+                      className="h-10 border mt-1 rounded px-4 w-full border-gray-400 focus:outline-none focus:border focus:border-gray-700"
+                      placeholder="Photo Url...."
+                      defaultValue={cause?.img2}
                     />
                   </div>
 

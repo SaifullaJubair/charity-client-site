@@ -18,7 +18,7 @@ const DonationPage = () => {
   if (isLoading) {
     return <Loader />;
   }
-  if (data.length === 0) {
+  if (data?.length === 0) {
     return (
       <div className=" mt-44">
         <Empty

@@ -58,7 +58,7 @@ const AllCauses = () => {
             We are working on it
           </h2>
           <p className="text-2xl font-semibold my-6 text-gray-700">
-            Causes available {causesData.length}
+            Causes available {causesData?.length}
           </p>
 
           <div className="text-gray-500 max-w-md  w-full ">

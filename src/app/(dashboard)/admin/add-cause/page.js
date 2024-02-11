@@ -18,6 +18,8 @@ const AddCausePage = () => {
     event.preventDefault();
     const title = event.target.title.value;
     const photoUrl = event.target.photoUrl.value;
+    const img = event.target.img.value;
+    const img2 = event.target.img2.value;
     const category = event.target.category.value;
 
     const goal = event.target.goal.value;
@@ -29,6 +31,8 @@ const AddCausePage = () => {
       name: category,
       title,
       primary_img: photoUrl,
+      img,
+      img2,
       title,
       goal,
       raised,
@@ -43,7 +47,7 @@ const AddCausePage = () => {
   };
   useEffect(() => {
     if (isSuccess) {
-      toast.success("Lens added successfully...");
+      toast.success("Cause added successfully...");
       router.push("/admin/manage-causes");
     }
   }, [isSuccess]);
@@ -72,11 +76,29 @@ const AddCausePage = () => {
                   <div className="md:col-span-2">
                     <label>Photo Url</label>
                     <input
-                      type="text"
+                      type="url"
                       name="photoUrl"
                       className="h-10 border mt-1 rounded px-4 w-full border-gray-400 focus:outline-none focus:border focus:border-gray-700"
                       placeholder="Photo Url...."
                       required
+                    />
+                  </div>
+                  <div className="md:col-span-2">
+                    <label>Photo Url Optional 1</label>
+                    <input
+                      type="url"
+                      name="img"
+                      className="h-10 border mt-1 rounded px-4 w-full border-gray-400 focus:outline-none focus:border focus:border-gray-700"
+                      placeholder="Optional Photo Url...."
+                    />
+                  </div>
+                  <div className="md:col-span-2">
+                    <label>Photo Url Optional 2</label>
+                    <input
+                      type="url"
+                      name="img2"
+                      className="h-10 border mt-1 rounded px-4 w-full border-gray-400 focus:outline-none focus:border focus:border-gray-700"
+                      placeholder="Optional Photo Url...."
                     />
                   </div>
 
@@ -88,7 +110,7 @@ const AddCausePage = () => {
                       name="category"
                     >
                       <option disabled selected value={""}>
-                        Select category
+                        Select Cause
                       </option>
                       <option value="Healthcare"> Healthcare</option>
                       <option value="Education">Education</option>
