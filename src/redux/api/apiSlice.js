@@ -61,6 +61,15 @@ export const api = createApi({
       invalidatesTags: ["Causes"],
     }),
 
+    // delete cause
+    deleteCause: builder.mutation({
+      query: (id) => ({
+        url: `/causes/${id}`,
+        method: "DELETE",
+      }),
+      invalidatesTags: ["Causes"],
+    }),
+
     // update cause
     updateCause: builder.mutation({
       query: ({ data, id }) => ({
@@ -108,6 +117,7 @@ export const {
   useGetSingleCauseQuery,
   useAddCauseMutation,
   useUpdateCauseMutation,
+  useDeleteCauseMutation,
   useGetAllDonationsQuery,
   useAddDonateMutation,
   useGetDonationByEmailQuery,

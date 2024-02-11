@@ -1,20 +1,36 @@
 "use client";
 import { Button, Modal, Table } from "antd";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { DeleteFilled, PlusOutlined, EditOutlined } from "@ant-design/icons";
 import { useRouter } from "next/navigation";
-import { useGetCausesQuery } from "@/redux/api/apiSlice";
+import {
+  useDeleteCauseMutation,
+  useGetCausesQuery,
+} from "@/redux/api/apiSlice";
 import Link from "next/link";
+import toast from "react-hot-toast";
+import Loader from "@/utils/Loader/Loader";
 
 const ManageCausesTable = () => {
   const { data: causes, isLoading } = useGetCausesQuery(undefined, {
     refetchOnMountOrArgChange: true,
   });
-  console.log(causes);
+  const [deleteCause, { isLoading: isDeleting, error, isSuccess }] =
+    useDeleteCauseMutation();
+  // console.log(causes);
   const router = useRouter();
+  useEffect(() => {
+    if (error) {
+      toast.error("Something went wrong... 😔 Cause can't delete");
+    } else if (isSuccess) {
+      toast.success("Cause deleted successfully");
+    }
+  }, [error, isSuccess]);
 
   const handleDeleteWithConfirmation = (id) => {
-    const handleOk = async () => {};
+    const handleOk = () => {
+      deleteCause(id);
+    };
 
     Modal.confirm({
       title: "Are you sure you want to delete this cause?",
@@ -91,6 +107,12 @@ const ManageCausesTable = () => {
       },
     },
   ];
+  if (isLoading) {
+    return <Loader />;
+  }
+  if (causes.length === 0) {
+    return <Loader />;
+  }
   return (
     <div className="bg-gray-200 lg:p-6 md:p-6 p-4 rounded-xl lg:min-h-screen">
       <div className="flex justify-between items-center pb-4">

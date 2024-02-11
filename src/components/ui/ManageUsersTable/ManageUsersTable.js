@@ -5,6 +5,7 @@ import { DeleteFilled, PlusOutlined, EditOutlined } from "@ant-design/icons";
 import { useRouter } from "next/navigation";
 import { useGetAllUsersQuery } from "@/redux/api/apiSlice";
 import Link from "next/link";
+import Loader from "@/utils/Loader/Loader";
 
 const ManageUsersTable = () => {
   const { data: users, isLoading } = useGetAllUsersQuery(undefined, {
@@ -85,6 +86,10 @@ const ManageUsersTable = () => {
       },
     },
   ];
+
+  if (isLoading) {
+    return <Loader />;
+  }
   return (
     <div className=" lg:p-6 md:p-6 p-4 rounded-xl lg:min-h-screen">
       <div className="flex justify-between items-center pb-4">

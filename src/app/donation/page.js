@@ -1,8 +1,10 @@
 "use client";
 
+import EmptyData from "@/components/ui/EmptyData/EmptyData";
 import { useGetDonationByEmailQuery } from "@/redux/api/apiSlice";
 import { cookie, satisfy } from "@/utils/Font/font";
-import { Button } from "antd";
+import Loader from "@/utils/Loader/Loader";
+import { Button, Empty } from "antd";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -12,6 +14,20 @@ const DonationPage = () => {
   const { user, error } = useSelector((state) => state.user);
   const donner = user.email;
   const { data, isLoading } = useGetDonationByEmailQuery(donner);
+
+  if (isLoading) {
+    return <Loader />;
+  }
+  if (data.length === 0) {
+    return (
+      <div className=" mt-44">
+        <Empty
+          className="text-2xl text-gray-700  "
+          description="You don't have any donation"
+        />
+      </div>
+    );
+  }
 
   return (
     <div className="max-w-[1920px] mx-auto">
