@@ -251,13 +251,17 @@ const Navbar = () => {
               >
                 <Menu.Item
                   key="1"
-                  className="font-semibold hover:text-secondary duration-200"
+                  className={`font-semibold hover:text-secondary duration-200 ${
+                    active === 1 ? "text-secondary font-bold" : ""
+                  }`}
                 >
                   <Link href={"/"}>Home</Link>
                 </Menu.Item>
                 <Menu.Item
                   key="2"
-                  className="font-semibold hover:text-secondary duration-200"
+                  className={`font-semibold hover:text-secondary duration-200 ${
+                    active === 2 ? "text-secondary font-bold" : ""
+                  }`}
                 >
                   <Link href="/cause">Cause</Link>
                 </Menu.Item>
@@ -265,7 +269,9 @@ const Navbar = () => {
                   menu={{
                     items,
                   }}
-                  className="text-primary mx-1   px-4 font-semibold"
+                  className={`font-semibold text-primary mx-2 px-3 py-2 hover:text-secondary duration-200 ${
+                    active === 3 ? "text-secondary font-bold" : ""
+                  }`}
                 >
                   <a onClick={(e) => e.preventDefault()}>
                     <Space>
@@ -276,7 +282,9 @@ const Navbar = () => {
                 </Dropdown>
                 <Menu.Item
                   key="4"
-                  className="font-semibold hover:text-secondary duration-200"
+                  className={`font-semibold hover:text-secondary duration-200 ${
+                    active === 4 ? "text-secondary font-bold" : ""
+                  }`}
                 >
                   <Link href="/statistic">Statistic</Link>
                 </Menu.Item>
@@ -285,9 +293,11 @@ const Navbar = () => {
                   <>
                     <Menu.Item
                       key="7"
-                      className="font-semibold hover:text-secondary duration-200"
+                      className={`font-semibold hover:text-secondary duration-200 ${
+                        active === 7 ? "text-secondary font-bold" : ""
+                      }`}
                     >
-                      <Link href="/register">Dashboard</Link>
+                      <Link href="/dashboard">Dashboard</Link>
                     </Menu.Item>
                     <Menu.Item
                       key={"8"}
@@ -301,13 +311,17 @@ const Navbar = () => {
                   <>
                     <Menu.Item
                       key="5"
-                      className="font-semibold hover:text-secondary duration-200"
+                      className={`font-semibold hover:text-secondary duration-200 ${
+                        active === 5 ? "text-secondary font-bold" : ""
+                      }`}
                     >
                       <Link href="/register">Register</Link>
                     </Menu.Item>
                     <Menu.Item
                       key="6"
-                      className="font-semibold hover:text-secondary duration-200"
+                      className={`font-semibold hover:text-secondary duration-200 ${
+                        active === 6 ? "text-secondary font-bold" : ""
+                      }`}
                     >
                       <Link href="/login">Login</Link>
                     </Menu.Item>
