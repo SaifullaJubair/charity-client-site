@@ -4,6 +4,7 @@ import { useState } from "react";
 import { DeleteFilled, PlusOutlined, EditOutlined } from "@ant-design/icons";
 import { useRouter } from "next/navigation";
 import { useGetCausesQuery } from "@/redux/api/apiSlice";
+import Link from "next/link";
 
 const ManageCausesTable = () => {
   const { data: causes, isLoading } = useGetCausesQuery(undefined, {
@@ -72,13 +73,11 @@ const ManageCausesTable = () => {
       render: (record) => {
         return (
           <div>
-            <Button
-              className="text-xl"
-              type="link"
-              onClick={() => router.push(`/admin/edit-cause/${record._id}`)}
-            >
-              <EditOutlined />
-            </Button>
+            <Link href={`/admin/edit-cause/${record._id}`}>
+              <Button className="text-xl" type="link">
+                <EditOutlined />
+              </Button>
+            </Link>
             <Button
               className="text-xl"
               type="link"

@@ -4,7 +4,7 @@ export const api = createApi({
   reducerPath: "api",
   tagTypes: ["Users", "Lenses"],
   baseQuery: fetchBaseQuery({
-    baseUrl: "https://charity-server.vercel.app",
+    baseUrl: " http://localhost:5000",
   }),
   endpoints: (builder) => ({
     // get all users
@@ -63,8 +63,8 @@ export const api = createApi({
 
     // update cause
     updateCause: builder.mutation({
-      query: (data) => ({
-        url: `/causes/${data.id}`,
+      query: ({ data, id }) => ({
+        url: `/causes/${id}`,
         method: "PUT",
         body: data,
       }),

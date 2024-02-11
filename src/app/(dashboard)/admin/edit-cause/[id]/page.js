@@ -1,5 +1,11 @@
+import EditCauseForm from "@/components/ui/EditCause/EditCause";
+
 const EditCausePage = () => {
-  return <div>Thi is edit cause</div>;
+  return (
+    <div>
+      <EditCauseForm />
+    </div>
+  );
 };
 
 export default EditCausePage;
