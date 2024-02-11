@@ -60,57 +60,30 @@ const AllCauses = () => {
           <p className="text-2xl font-semibold my-6 text-gray-700">
             Causes available {causesData.length}
           </p>
-          {/* <div>
-            <label
-              htmlFor="cause"
-              className="block text-sm font-medium text-gray-900"
-            >
-              Search by Causes
-            </label>
 
+          <div className="text-gray-500 max-w-md  w-full ">
+            <label>Category</label>
             <select
-              name="cause"
-              id="cause"
-              className="mt-1.5 w-full px-5 py-3 text-lg  rounded-md border-gray-300 text-gray-700 sm:text-sm"
+              id="category"
+              className="block rounded border-gray-400 focus:outline-none focus:border focus:border-gray-700 pl-2 py-2.5 mt-1 px-0 w-full text-sm text-gray-900 bg-transparent border appearance-none  dark:border-gray-600 dark:focus:border-gray  focus:ring-0  peer focus:border-gray-800"
+              name="category"
+              onChange={(e) => handleChange(e.target.value)}
             >
-              <option className="mt-1" value="">
-                Please select
+              <option value="Healthcare"> Healthcare</option>
+              <option value="Education">Education</option>
+              <option value="Humanitarian Aid"> Humanitarian Aid</option>
+              <option value="Animal Welfare">Animal Welfare</option>
+              <option value="The Right of Childen">
+                {" "}
+                The Right of Childen
               </option>
-              <option className="mt-1" value="JM">
-                John Mayer
+              <option value="Winter Survival Pack">
+                {" "}
+                Winter Survival Pack
               </option>
-              <option className="mt-1" value="SRV">
-                Stevie Ray Vaughn
-              </option>
-              <option className="mt-1" value="JH">
-                Jimi Hendrix
-              </option>
-              <option className="mt-1" value="BBK">
-                B.B King
-              </option>
-              <option className="mt-1" value="AK">
-                Albert King
-              </option>
-              <option className="mt-1" value="BG">
-                Buddy Guy
-              </option>
-              <option className="mt-1" value="EC">
-                Eric Clapton
-              </option>
+              <option value="Clean Water"> Clean Water</option>
             </select>
-          </div> */}
-
-          <Select
-            placeholder="Select a cause"
-            style={{ width: 300, height: 40 }}
-            onChange={handleChange}
-          >
-            {causes.map((cause) => (
-              <Select.Option key={cause.name} value={cause.name}>
-                {cause.name}
-              </Select.Option>
-            ))}
-          </Select>
+          </div>
           <div className="text-gray-500 max-w-xl  w-full my-6">
             <div>
               {/* <label htmlFor="name" className="block mb-2 font-semibold">
@@ -133,81 +106,56 @@ const AllCauses = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-12 text-black mx-4 xl:mx-0 my-6">
           {causesData?.map((cause) => (
             <div
-              className="p-4 rounded-md shadow-xl bg-white hover:scale-105 duration-500"
-              key={cause._id}
+              className="p-4 rounded-md bg-white hover:scale-105 duration-500"
+              key={cause?._id}
             >
-              <div className="w-full rounded-lg" />
               <Image
-                src={cause.primary_img}
-                alt="cause"
-                height={300}
+                src={cause?.primary_img}
                 width={300}
+                height={100}
                 layout="responsive"
-                className="w-full rounded-lg"
+                alt="Shelter"
+                className="rounded-lg"
               />
-              <div className="mt-4">
-                <h3
-                  className="text-xl font-bold my-2 mt-12 tracking-wider text-secondary"
-                  style={{ fontFamily: cookie.style.fontFamily }}
-                >
-                  {cause.name}
-                </h3>
-                <h2
-                  className="text-3xl font-bold my-4 text-darkLight"
-                  style={{ fontFamily: yatra.style.fontFamily }}
-                >
-                  {cause.title}
-                </h2>
-                <p className="text-gry-700 text-sm">
-                  {cause.description.substring(0, 100) + "..."}
+              <h6
+                className="text-2xl mt-2 text-secondary"
+                style={{ fontFamily: cookie.style.fontFamily }}
+              >
+                {cause?.name}
+              </h6>
+              <h2
+                className="text-xl font-semibold mt-2 mb-4
+               hover:text-secondary text-darkLight duration-500"
+              >
+                {cause?.title}
+              </h2>
+
+              <div className=" text-gray-700 font-semibold mt-2">
+                <p>Raised : {cause?.raised}$</p>
+                <p className="my-1">Goal : {cause?.goal}$</p>
+                <p className="mt-2">
+                  {Math.round((cause?.raised / cause?.goal) * 100 || 0)}%
                 </p>
-                <Button type="primary" className="mt-4 mr-4 bg-secondary">
-                  Donate
-                </Button>
-                <Link href={`/cause/${cause._id}`}>
+                <div className="my-2 h-2 w-9/12 bg-gray-200 rounded-lg overflow-hidden">
+                  <div
+                    className="h-full bg-green-500 rounded-lg"
+                    style={{
+                      width: `${Math.round(
+                        (cause?.raised / cause?.goal) * 100 || 0
+                      )}%`,
+                      transition: "width 0.5s",
+                    }}
+                  ></div>
+                </div>
+                <Link href={`/cause/${cause?._id}`}>
                   <Button type="primary" className="mt-4 bg-secondary">
-                    Details
+                    View Details
                   </Button>
                 </Link>
               </div>
+              {/* <Slider defaultValue={30} /> */}
             </div>
           ))}
-
-          {/* {causesData?.map((cause) => {
-            return (
-              <div
-                className="p-4 rounded-md shadow-xl bg-white hover:scale-105 duration-500"
-                key={cause._id}
-              >
-                <div className="w-full rounded-lg" />
-                <Image
-                  src={cause.primary_img}
-                  alt="cause"
-                  height={300}
-                  width={300}
-                  layout="responsive"
-                  className="w-full rounded-lg"
-                />
-                <div className="mt-4">
-                  <h3
-                    className="text-xl font-bold my-2 mt-12 tracking-wider text-secondary"
-                    style={{ fontFamily: cookie.style.fontFamily }}
-                  >
-                    {cause.name}
-                  </h3>
-                  <h2
-                    className="text-3xl font-bold my-4 text-darkLight"
-                    style={{ fontFamily: yatra.style.fontFamily }}
-                  >
-                    {cause.title}
-                  </h2>
-                  <p className="text-gry-700 text-sm">
-                    {cause.description.substring(0, 100) + "..."}
-                  </p>
-                </div>
-              </div>
-            );
-          })} */}
         </div>
       </div>
     </div>

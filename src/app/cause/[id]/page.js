@@ -18,7 +18,7 @@ const CauseDetailsPage = ({ params }) => {
     refetchOnMountOrArgChange: true,
   });
   // Calculate the percentage
-  const percentage = (data?.raised / data?.goal) * 100 || 0;
+  const percentage = Math.round((data?.raised / data?.goal) * 100);
   const dispatch = useDispatch();
   const { user, error } = useSelector((state) => state.user);
   const [addDonate, { isLoading: isLoadingDonate, error: errorDonate }] =

@@ -23,7 +23,7 @@ const ViewCause = () => {
     month: "short",
     year: "numeric",
   }).format(currentDate);
-  console.log(formattedDate);
+  // console.log(formattedDate);
   //   console.log(causes);
 
   let causesData;
@@ -125,15 +125,17 @@ const ViewCause = () => {
 
               <div className=" text-gray-700 font-semibold mt-2">
                 <p>Raised : {cause?.raised}$</p>
-                <p className="my-1">Goal : {cause?.goal}</p>
+                <p className="my-1">Goal : {cause?.goal}$</p>
                 <p className="mt-2">
-                  {(cause?.raised / cause?.goal) * 100 || 0}%
+                  {Math.round((cause?.raised / cause?.goal) * 100 || 0)}%
                 </p>
                 <div className="my-2 h-2 w-9/12 bg-gray-200 rounded-lg overflow-hidden">
                   <div
                     className="h-full bg-green-500 rounded-lg"
                     style={{
-                      width: `${(cause?.raised / cause?.goal) * 100 || 0}%`,
+                      width: `${Math.round(
+                        (cause?.raised / cause?.goal) * 100 || 0
+                      )}%`,
                       transition: "width 0.5s",
                     }}
                   ></div>
