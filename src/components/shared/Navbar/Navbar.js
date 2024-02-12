@@ -188,17 +188,17 @@ const Navbar = () => {
                 </Space>
               </a>
             </Dropdown>
-            <Menu.Item
-              key="4"
-              className={`font-semibold hover:text-secondary duration-200 ${
-                active === 4 ? "text-secondary font-bold" : ""
-              }`}
-            >
-              <Link href="/statistic">My Statistic</Link>
-            </Menu.Item>
 
             {user?.email ? (
               <>
+                <Menu.Item
+                  key="4"
+                  className={`font-semibold hover:text-secondary duration-200 ${
+                    active === 4 ? "text-secondary font-bold" : ""
+                  }`}
+                >
+                  <Link href="/statistic">My Statistic</Link>
+                </Menu.Item>
                 <Menu.Item
                   key="9"
                   className={`font-semibold hover:text-secondary duration-200 ${
@@ -297,33 +297,35 @@ const Navbar = () => {
                     </Space>
                   </a>
                 </Dropdown>
-                <Menu.Item
-                  key="4"
-                  className={`font-semibold hover:text-secondary duration-200 ${
-                    active === 4 ? "text-secondary font-bold" : ""
-                  }`}
-                >
-                  <Link href="/statistic">Statistic</Link>
-                </Menu.Item>
-                <Menu.Item
-                  key="9"
-                  className={`font-semibold hover:text-secondary duration-200 ${
-                    active === 9 ? "text-secondary font-bold" : ""
-                  }`}
-                >
-                  <Link href="/donation">Donation</Link>
-                </Menu.Item>
 
                 {user?.email ? (
                   <>
                     <Menu.Item
-                      key="7"
+                      key="4"
                       className={`font-semibold hover:text-secondary duration-200 ${
-                        active === 7 ? "text-secondary font-bold" : ""
+                        active === 4 ? "text-secondary font-bold" : ""
                       }`}
                     >
-                      <Link href="/dashboard">Dashboard</Link>
+                      <Link href="/statistic">Statistic</Link>
                     </Menu.Item>
+                    <Menu.Item
+                      key="9"
+                      className={`font-semibold hover:text-secondary duration-200 ${
+                        active === 9 ? "text-secondary font-bold" : ""
+                      }`}
+                    >
+                      <Link href="/donation">Donation</Link>
+                    </Menu.Item>
+                    {data?.role === "admin" && (
+                      <Menu.Item
+                        key="7"
+                        className={`font-semibold hover:text-secondary duration-200 ${
+                          active === 7 ? "text-secondary font-bold" : ""
+                        }`}
+                      >
+                        <Link href="/dashboard">Dashboard</Link>
+                      </Menu.Item>
+                    )}
                     <Menu.Item
                       key={"8"}
                       className="font-semibold hover:text-secondary duration-200"

@@ -1,10 +1,10 @@
 "use client";
+
 import { useGetAllDonationsQuery } from "@/redux/api/apiSlice";
 import Loader from "@/utils/Loader/Loader";
 import React, { useEffect, useState } from "react";
 import ApexChart from "react-apexcharts";
 import { Empty } from "antd";
-import Chart from "react-apexcharts";
 
 const AllStatistic = () => {
   const { data, isLoading } = useGetAllDonationsQuery();
