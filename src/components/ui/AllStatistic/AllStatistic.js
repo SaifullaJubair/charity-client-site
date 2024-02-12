@@ -4,6 +4,7 @@ import Loader from "@/utils/Loader/Loader";
 import React, { useEffect, useState } from "react";
 import ApexChart from "react-apexcharts";
 import { Empty } from "antd";
+import Chart from "react-apexcharts";
 
 const AllStatistic = () => {
   const { data, isLoading } = useGetAllDonationsQuery();
@@ -11,7 +12,7 @@ const AllStatistic = () => {
 
   useEffect(() => {
     if (data) {
-      // Process your data to prepare for the pie chart
+      // Process your data to prepare for the bar chart
       const processedData = data.map((donation) => ({
         x: donation.causeName,
         y: donation.amount,
@@ -21,8 +22,14 @@ const AllStatistic = () => {
     }
   }, [data]);
 
-  const chartOptions = {
+  const pieChartOptions = {
     labels: chartData.map((entry) => entry.x),
+  };
+
+  const barChartOptions = {
+    xaxis: {
+      categories: chartData.map((entry) => entry.x),
+    },
   };
 
   if (isLoading) {
@@ -39,12 +46,24 @@ const AllStatistic = () => {
 
   return (
     <div>
-      <ApexChart
-        options={chartOptions}
-        series={chartData.map((entry) => entry.y)}
-        type="pie"
-        height={350}
-      />
+      <div>
+        <h2>Pie Chart</h2>
+        <ApexChart
+          options={pieChartOptions}
+          series={chartData.map((entry) => entry.y)}
+          type="pie"
+          height={350}
+        />
+      </div>
+      <div>
+        <h2>Bar Chart</h2>
+        <ApexChart
+          options={barChartOptions}
+          series={[{ data: chartData.map((entry) => entry.y) }]}
+          type="bar"
+          height={350}
+        />
+      </div>
     </div>
   );
 };
