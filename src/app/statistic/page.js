@@ -3,39 +3,40 @@ import { useSelector } from "react-redux";
 import { useGetDonationByEmailQuery } from "@/redux/api/apiSlice";
 import Loader from "@/utils/Loader/Loader";
 import { Empty } from "antd";
-// import ApexChart from "react-apexcharts";
-// import { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+
+import dynamic from "next/dynamic";
+const ApexChart = dynamic(() => import("react-apexcharts"), { ssr: false });
 
 const MyStatistic = () => {
   const { user } = useSelector((state) => state.user);
   const donner = user.email;
-  // const name = user.name;
   const { data, isLoading } = useGetDonationByEmailQuery(donner);
-  // //   console.log(data);
 
-  // const [chartData, setChartData] = useState([]);
+  const [chartData, setChartData] = useState([]);
 
-  // useEffect(() => {
-  //   if (data) {
-  //     // Process your data to prepare for the bar chart
-  //     const processedData = data.map((donation) => ({
-  //       x: donation.causeName,
-  //       y: donation.amount,
-  //     }));
+  useEffect(() => {
+    if (data) {
+      // Process your data to prepare for the bar chart
+      const processedData = data.map((donation) => ({
+        x: donation.causeName,
+        y: donation.amount,
+      }));
 
-  //     setChartData(processedData);
-  //   }
-  // }, [data]);
+      setChartData(processedData);
+    }
+  }, [data]);
 
-  // const pieChartOptions = {
-  //   labels: chartData.map((entry) => entry.x),
-  // };
-
-  // const barChartOptions = {
-  //   xaxis: {
-  //     categories: chartData.map((entry) => entry.x),
-  //   },
-  // };
+  const pieChartOptions = {
+    labels: chartData.map((entry) => entry.x),
+  };
+  //   console.log(pieChartOptions);
+  const barChartOptions = {
+    xaxis: {
+      categories: chartData.map((entry) => entry.x),
+    },
+  };
+  //   console.log(barChartOptions);
 
   if (isLoading) {
     return <Loader />;
@@ -51,32 +52,44 @@ const MyStatistic = () => {
 
   return (
     <div className="max-w-[1920px] mx-auto">
-      <div className="max-w-[1440px] mx-auto">
-        <h1 className="text-3xl my-10 text-gray-700 font-semibold">
+      <div className="max-w-[1440px] mx-auto  ">
+        <h1 className="text-2xl my-10 text-gray-700 font-semibold max-w-2xl">
           This account {donner} have {data?.length} Donation. Your total
           donation amount is $
           {data?.reduce((total, donation) => total + donation.amount, 0)}{" "}
         </h1>
-        {/* <div>
-          <div>
+        <div>
+          <div className="my-10">
             <h2>Pie Chart</h2>
             <ApexChart
               options={pieChartOptions}
               series={chartData.map((entry) => entry.y)}
               type="pie"
               height={350}
+              width={500}
             />
           </div>
-          <div>
+          <div className="my-10">
             <h2>Bar Chart</h2>
             <ApexChart
               options={barChartOptions}
               series={[{ data: chartData.map((entry) => entry.y) }]}
               type="bar"
               height={350}
+              width={500}
             />
           </div>
-        </div> */}
+          <div className="my-10">
+            <h2>Line Chart</h2>
+            <ApexChart
+              type="line"
+              options={barChartOptions}
+              series={[{ data: chartData.map((entry) => entry.y) }]}
+              height={200}
+              width={500}
+            />
+          </div>
+        </div>
       </div>
     </div>
   );
