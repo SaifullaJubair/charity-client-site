@@ -75,7 +75,7 @@ const MyStatistic = () => {
           {data?.reduce((total, donation) => total + donation.amount, 0)}{" "}
         </h1>
         <div>
-          <div className="my-10">
+          <div className="py-10 overflow-x-auto ">
             <h2>Pie Chart</h2>
             <ApexChart
               options={pieChartOptions}
@@ -85,7 +85,7 @@ const MyStatistic = () => {
               width={500}
             />
           </div>
-          <div className="my-10">
+          <div className="py-10 overflow-x-auto">
             <h2>Bar Chart</h2>
             <ApexChart
               options={barChartOptions}
@@ -95,7 +95,7 @@ const MyStatistic = () => {
               width={500}
             />
           </div>
-          <div className="my-10">
+          <div className="py-10 overflow-x-auto">
             <h2>Line Chart</h2>
             <ApexChart
               type="line"

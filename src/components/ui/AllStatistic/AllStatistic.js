@@ -9,11 +9,25 @@ import { Empty } from "antd";
 const AllStatistic = () => {
   const { data, isLoading } = useGetAllDonationsQuery();
   const [chartData, setChartData] = useState([]);
+  // console.log(data);
 
   useEffect(() => {
     if (data) {
+      let newData = [];
+
+      data.forEach((element) => {
+        if (!newData.find((item) => item.causeName === element.causeName)) {
+          newData.push({ ...element });
+        } else {
+          let index = newData.findIndex(
+            (item) => item.causeName === element.causeName
+          );
+          newData[index].amount += element.amount;
+        }
+      });
+      console.log("newdata: ", newData);
       // Process your data to prepare for the bar chart
-      const processedData = data.map((donation) => ({
+      const processedData = newData.map((donation) => ({
         x: donation.causeName,
         y: donation.amount,
       }));
