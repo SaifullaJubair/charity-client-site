@@ -16,7 +16,13 @@ const StatisticPage = () => {
   if (isLoading) {
     return <Loader />;
   }
-
+  if (!donner) {
+    return (
+      <div className=" mt-44 text-center ">
+        <p>Please Login to see your donation statistic</p>
+      </div>
+    );
+  }
   if (data?.length === 0) {
     return (
       <div className=" mt-44">

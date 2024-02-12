@@ -18,6 +18,7 @@ import { MenuItems } from "./Menu";
 import { useDispatch, useSelector } from "react-redux";
 import { logOut } from "@/redux/features/user/userSlice";
 import Loader from "@/utils/Loader/Loader";
+import { useGetSingleUserQuery } from "@/redux/api/apiSlice";
 
 const { Header, Content } = Layout;
 const { Title } = Typography;
@@ -94,7 +95,10 @@ const items = [
 const Navbar = () => {
   const { user } = useSelector((state) => state.user);
   // console.log(user);
+
   const dispatch = useDispatch();
+  const { data, isLoading } = useGetSingleUserQuery(user?.email);
+
   const handleLogOut = () => {
     dispatch(logOut());
   };
@@ -190,7 +194,7 @@ const Navbar = () => {
                 active === 4 ? "text-secondary font-bold" : ""
               }`}
             >
-              <Link href="/statistic">Statistic</Link>
+              <Link href="/statistic">My Statistic</Link>
             </Menu.Item>
 
             {user?.email ? (
@@ -203,14 +207,17 @@ const Navbar = () => {
                 >
                   <Link href="/donation">Donation</Link>
                 </Menu.Item>
-                <Menu.Item
-                  key="7"
-                  className={`font-semibold hover:text-secondary duration-200 ${
-                    active === 7 ? "text-secondary font-bold" : ""
-                  }`}
-                >
-                  <Link href="/dashboard">Dashboard</Link>
-                </Menu.Item>
+                {/* Dashboard only for admin */}
+                {data?.role === "admin" && (
+                  <Menu.Item
+                    key="7"
+                    className={`font-semibold hover:text-secondary duration-200 ${
+                      active === 7 ? "text-secondary font-bold" : ""
+                    }`}
+                  >
+                    <Link href="/dashboard">Dashboard</Link>
+                  </Menu.Item>
+                )}
                 <Menu.Item
                   key={"8"}
                   className="font-semibold hover:text-secondary duration-200"

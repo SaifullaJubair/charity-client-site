@@ -34,6 +34,16 @@ export const api = createApi({
       }),
     }),
 
+    // get single user
+
+    getSingleUser: builder.query({
+      query: (email) => ({
+        url: `/users/${email}`,
+        method: "GET",
+      }),
+      providesTags: ["Users"],
+    }),
+
     // update user role
     updateUserRole: builder.mutation({
       query: ({ id }) => ({
@@ -122,6 +132,7 @@ export const {
   useGetAllUsersQuery,
   useSaveUserMutation,
   useGetUserMutation,
+  useGetSingleUserQuery,
   useUpdateUserRoleMutation,
   useGetCausesQuery,
   useGetSingleCauseQuery,
