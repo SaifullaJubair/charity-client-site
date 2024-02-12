@@ -3,39 +3,39 @@ import { useSelector } from "react-redux";
 import { useGetDonationByEmailQuery } from "@/redux/api/apiSlice";
 import Loader from "@/utils/Loader/Loader";
 import { Empty } from "antd";
-import ApexChart from "react-apexcharts";
-import { useEffect, useState } from "react";
+// import ApexChart from "react-apexcharts";
+// import { useEffect, useState } from "react";
 
 const MyStatistic = () => {
   const { user } = useSelector((state) => state.user);
   const donner = user.email;
-  const name = user.name;
+  // const name = user.name;
   const { data, isLoading } = useGetDonationByEmailQuery(donner);
-  //   console.log(data);
+  // //   console.log(data);
 
-  const [chartData, setChartData] = useState([]);
+  // const [chartData, setChartData] = useState([]);
 
-  useEffect(() => {
-    if (data) {
-      // Process your data to prepare for the bar chart
-      const processedData = data.map((donation) => ({
-        x: donation.causeName,
-        y: donation.amount,
-      }));
+  // useEffect(() => {
+  //   if (data) {
+  //     // Process your data to prepare for the bar chart
+  //     const processedData = data.map((donation) => ({
+  //       x: donation.causeName,
+  //       y: donation.amount,
+  //     }));
 
-      setChartData(processedData);
-    }
-  }, [data]);
+  //     setChartData(processedData);
+  //   }
+  // }, [data]);
 
-  const pieChartOptions = {
-    labels: chartData.map((entry) => entry.x),
-  };
+  // const pieChartOptions = {
+  //   labels: chartData.map((entry) => entry.x),
+  // };
 
-  const barChartOptions = {
-    xaxis: {
-      categories: chartData.map((entry) => entry.x),
-    },
-  };
+  // const barChartOptions = {
+  //   xaxis: {
+  //     categories: chartData.map((entry) => entry.x),
+  //   },
+  // };
 
   if (isLoading) {
     return <Loader />;
@@ -57,7 +57,7 @@ const MyStatistic = () => {
           donation amount is $
           {data?.reduce((total, donation) => total + donation.amount, 0)}{" "}
         </h1>
-        <div>
+        {/* <div>
           <div>
             <h2>Pie Chart</h2>
             <ApexChart
@@ -76,7 +76,7 @@ const MyStatistic = () => {
               height={350}
             />
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );
