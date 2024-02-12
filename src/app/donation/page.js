@@ -18,6 +18,21 @@ const DonationPage = () => {
   if (isLoading) {
     return <Loader />;
   }
+
+  if (!donner) {
+    return (
+      <div className=" mt-44">
+        <h2 className=" font-semibold text-2xl my-4 text-center">
+          Please{" "}
+          <Link href={"/login"} className="text-secondary ">
+            Login
+          </Link>{" "}
+          to donate!
+        </h2>
+      </div>
+    );
+  }
+
   if (data?.length === 0) {
     return (
       <div className=" mt-44">

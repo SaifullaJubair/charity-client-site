@@ -6,6 +6,8 @@ import { Empty } from "antd";
 import { useEffect, useState } from "react";
 
 import dynamic from "next/dynamic";
+import UnAuthorize from "@/components/ui/UnAuthorize/UnAuthorize";
+import Link from "next/link";
 const ApexChart = dynamic(() => import("react-apexcharts"), { ssr: false });
 
 const MyStatistic = () => {
@@ -40,6 +42,20 @@ const MyStatistic = () => {
 
   if (isLoading) {
     return <Loader />;
+  }
+
+  if (!donner) {
+    return (
+      <div className=" mt-44">
+        <h2 className=" font-semibold text-2xl my-4 text-center">
+          Please{" "}
+          <Link href={"/login"} className="text-secondary ">
+            Login
+          </Link>{" "}
+          to donate!
+        </h2>
+      </div>
+    );
   }
 
   if (!data || data.length === 0) {
