@@ -1,14 +1,23 @@
 "use client";
+import UnAuthorize from "@/components/ui/UnAuthorize/UnAuthorize";
+import { useGetSingleUserQuery } from "@/redux/api/apiSlice";
+import Loader from "@/utils/Loader/Loader";
 import { RightOutlined } from "@ant-design/icons";
 import { Button, Drawer, Layout, Menu } from "antd";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
+import { useSelector } from "react-redux";
 
 const { Content, Sider } = Layout;
 
 const Sidebar = ({ children }) => {
   const [open, setOpen] = useState(false);
+
+  const { user } = useSelector((state) => state.user);
+  // console.log(user);
+  const { data, isLoading } = useGetSingleUserQuery(user?.email);
+  console.log(data);
   const showDrawer = () => {
     setOpen(true);
     console.log("button click");
@@ -29,6 +38,14 @@ const Sidebar = ({ children }) => {
   const getSelectedKey = () => {
     return adminItems.find((item) => item.href === pathname)?.key || "";
   };
+
+  if (isLoading) {
+    return <Loader />;
+  }
+
+  if (data?.role !== "admin") {
+    return <UnAuthorize />;
+  }
 
   return (
     <Layout>

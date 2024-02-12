@@ -95,9 +95,9 @@ const items = [
 const Navbar = () => {
   const { user } = useSelector((state) => state.user);
   // console.log(user);
+  const { data, isLoading } = useGetSingleUserQuery(user?.email);
 
   const dispatch = useDispatch();
-  const { data, isLoading } = useGetSingleUserQuery(user?.email);
 
   const handleLogOut = () => {
     dispatch(logOut());
